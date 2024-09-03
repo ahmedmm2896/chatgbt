@@ -29,48 +29,63 @@
     </div>
 
     <script>
-        document.querySelector('.chat-input').addEventListener('keydown', function(event) {
-            if (event.key === 'Enter') {
-                sendMessage();
+    document.querySelector('.chat-input').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            sendMessage();
+        }
+    });
+
+    function sendMessage() {
+        const inputField = document.querySelector('.chat-input');
+        const message = inputField.value.trim();
+
+        if (message === "") {
+            alert("Please enter a message.");
+            return;
+        }
+
+        // Display user's message in chat log
+        displayMessage('user', message);
+
+        // Send message to the backend or AI service
+        fetch('YOUR_BACKEND_OR_API_URL', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ message: message })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
+            return response.json();
+        })
+        .then(data => {
+            // Display AI's response
+            displayMessage('bot', data.response);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            displayMessage('bot', 'There was an error processing your request.');
         });
 
-        function sendMessage() {
-            const inputField = document.querySelector('.chat-input');
-            const message = inputField.value;
+        inputField.value = ''; // Clear input field
+    }
 
-            // Display user's message in chat log
-            displayMessage('user', message);
+    function displayMessage(sender, message) {
+        const chatLog = document.querySelector('.chat-log');
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message', sender);
+        messageElement.textContent = message;
+        chatLog.appendChild(messageElement);
+        chatLog.scrollTop = chatLog.scrollHeight; // Auto-scroll to the bottom
+    }
+</script>
 
-            // Send message to the backend or AI service
-            fetch('YOUR_BACKEND_OR_API_URL', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ message: message })
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Display AI's response
-                displayMessage('bot', data.response);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                displayMessage('bot', 'There was an error processing your request.');
-            });
+    <script>
 
-            inputField.value = ''; // Clear input field
-        }
 
-        function displayMessage(sender, message) {
-            const chatLog = document.querySelector('.chat-log');
-            const messageElement = document.createElement('div');
-            messageElement.classList.add('message', sender);
-            messageElement.textContent = message;
-            chatLog.appendChild(messageElement);
-        }
-    </script>
 </body>
 </html>
 
