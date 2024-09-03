@@ -1,6 +1,9 @@
 /* General Chatbot Styling */
-body {
+html, body {
     margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
     font-family: 'Arial', sans-serif;
     background-color: #0a0f27; /* Maintain the dark blue background */
     color: white;
@@ -8,87 +11,26 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
-/* Chat Section */
+/* Chat Container */
 .chat-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     width: 100%;
     height: 100%;
-    background-color: transparent; /* Transparent background */
-}
-
-.chat-section {
+    background-color: #0a0f27; /* Maintain the dark blue background */
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 800px;
-    height: 600px; /* Adjust height to your preference */
-    background-color: #0a0f27; /* Same dark blue background */
-    border-radius: 50px; /* Oval shape */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-}
-
-.chat-log {
-    flex-grow: 1;
-    padding: 20px;
-    overflow-y: auto; /* Allows scrolling for long messages */
-    background-color: #0a0f27; /* Same dark blue background */
-    color: white;
-    border-top-left-radius: 50px; /* Maintain the oval shape */
-    border-top-right-radius: 50px; /* Maintain the oval shape */
-}
-
-.chat-footer {
-    display: flex;
+    justify-content: center;
     align-items: center;
-    padding: 20px;
-    background-color: #0a0f27; /* Same dark blue background */
-    border-bottom-left-radius: 50px; /* Maintain the oval shape */
-    border-bottom-right-radius: 50px; /* Maintain the oval shape */
-}
-
-.chat-input {
-    flex-grow: 1;
-    padding: 10px;
-    font-size: 18px;
-    border: none;
-    border-radius: 25px;
-    outline: none;
-    background-color: white; /* Optional: change background color of input */
-    color: black; /* Optional: change text color of input */
+    position: relative;
+    overflow: hidden;
 }
 
 /* Iframe Styling */
 iframe {
     width: 100%;
-    height: 100%; /* Make iframe fill the entire container */
+    height: 100%;
     border: none;
     background-color: transparent; /* Ensure iframe is transparent */
+    display: block;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .chat-section {
-        width: 90%;
-        height: auto; /* Adjust to fit smaller screens */
-        border-radius: 30px; /* Slightly less rounded for smaller screens */
-    }
-
-    .chat-log, .chat-footer {
-        border-radius: 30px; /* Adjusted to match new shape */
-    }
-
-    .chat-input {
-        font-size: 16px;
-    }
-
-    iframe {
-        height: 100%; /* Ensure iframe fills available space on smaller screens */
-    }
-}
