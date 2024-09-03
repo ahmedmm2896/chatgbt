@@ -1,4 +1,4 @@
-//* General Styling */
+/* General Styling */
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
@@ -66,26 +66,26 @@ header {
     box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
 }
 
-/* Floating Sections */
+/* Horizontal Floating Sections */
 .floating-sections {
     position: absolute;
     top: 20px;
     right: 20px;
     z-index: 1000;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 10px;
 }
 
 .floating-section {
     background-color: #0ef;
     color: #0a0f27;
     padding: 10px 20px;
-    margin-bottom: 10px;
-    border-radius: 5px;
+    border-radius: 30px; /* Oval shape */
     text-decoration: none;
     font-weight: bold;
-    text-align: right;
+    text-align: center;
     box-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
     transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -113,55 +113,4 @@ header {
 .about-us p, .services p, .testimonials p, .contact-us p {
     font-size: 22px;
     line-height: 1.8;
-    max-width: 800px;
-    margin: 0 auto 40px;
-    color: #0ef;
-    text-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
-}
-
-/* Footer */
-footer {
-    padding: 20px;
-    text-align: center;
-    background-color: #091223;
-}
-
-footer p {
-    margin: 0;
-    font-size: 14px;
-    color: #ccc;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .try-now {
-        font-size: 18px;
-        padding: 12px 24px;
-    }
-
-    .logo {
-        width: 120px;
-    }
-
-    .slogan {
-        font-size: 32px;
-    }
-
-    .floating-sections {
-        top: 10px;
-        right: 10px;
-    }
-
-    .floating-section {
-        font-size: 14px;
-        padding: 8px 16px;
-    }
-
-    .about-us h2, .services h2, .testimonials h2, .contact-us h2 {
-        font-size: 28px;
-    }
-
-    .about-us p, .services p, .testimonials p, .contact-us p {
-        font-size: 18px;
-    }
-}
+    max-width:
