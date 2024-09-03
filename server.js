@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 // Replace 'YOUR_OPENAI_API_KEY' with your actual OpenAI API key
-const OPENAI_API_KEY = 'YOUR_OPENAI_API_KEY';
+const OPENAI_API_KEY = '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';
 
 app.post('/api/message', async (req, res) => {
     const userMessage = req.body.message;
