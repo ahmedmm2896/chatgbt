@@ -10,22 +10,6 @@
     <iframe
         src="https://www.chatbase.co/chatbot-iframe/nn2NNjqLTQPUjvNgKRqiJ"
         frameborder="0"
-        id="chatbotIframe">
     </iframe>
-
-    <script>
-        document.getElementById('chatbotIframe').addEventListener('load', function() {
-            const iframeContent = this.contentWindow.document;
-
-            const logo = iframeContent.querySelector('img[alt="PharmAI Logo"]'); // Adjust the selector to target your logo
-
-            if (logo) {
-                logo.style.cursor = 'pointer';
-                logo.addEventListener('click', function() {
-                    window.location.href = 'https://pharmai3.vercel.app/'; // Replace with your actual homepage URL
-                });
-            }
-        });
-    </script>
 </body>
 </html>
