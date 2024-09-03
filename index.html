@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive AI Chatbot</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1f2937;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chat-container {
+            flex-grow: 1;
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .message {
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            max-width: 70%;
+        }
+        .message.user {
+            background-color: #4b5563;
+            align-self: flex-end;
+            text-align: right;
+        }
+        .message.bot {
+            background-color: #3b82f6;
+            align-self: flex-start;
+            text-align: left;
+        }
+        .input-container {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .input-container input {
+            flex-grow: 1;
+            padding: 10px;
+            border-radius: 25px;
+            border: none;
+            outline: none;
+            background-color: #374151;
+            color: white;
+            font-size: 16px;
+        }
+        .input-container button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            border-radius: 25px;
+            border: none;
+            background-color: #3b82f6;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container" id="chat-container"></div>
+    <div class="input-container">
+        <input type="text" id="chatInput" placeholder="Type your message..." />
+        <button id="sendButton">Send</button>
+    </div>
+
+    <script>
+        document.getElementById('sendButton').addEventListener('click', sendMessage);
+        document.getElementById('chatInput').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        function sendMessage() {
+            const inputField = document.getElementById('chatInput');
+            const message = inputField.value.trim();
+
+            if (message === "") return;
+
+            displayMessage('user', message);
+            inputField.value = "";
+
+            fetch('http://localhost:3000/api/message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: message })
+            })
+            .then(response => response.json())
+            .then(data => displayMessage('bot', data.response))
+            .catch(error => displayMessage('bot', 'Sorry, something went wrong.'));
+        }
+
+        function displayMessage(sender, text) {
+            const chatContainer = document.getElementById('chat-container');
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', sender);
+            messageElement.textContent = text;
+            chatContainer.appendChild(messageElement);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+    </script>
+</body>
+</html>
