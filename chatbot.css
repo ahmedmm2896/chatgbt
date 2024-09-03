@@ -2,7 +2,7 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background-color: #0a0f27; /* Dark blue background */
+    background-color: transparent; /* Remove background color */
     color: white;
     overflow: hidden;
     display: flex;
@@ -27,7 +27,7 @@ body {
     justify-content: space-between;
     width: 800px;
     height: 600px; /* Adjust height to your preference */
-    background-color: #091223;
+    background-color: transparent; /* Remove background color */
     border-radius: 50px; /* Oval shape */
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     overflow: hidden;
@@ -37,7 +37,7 @@ body {
     flex-grow: 1;
     padding: 20px;
     overflow-y: auto; /* Allows scrolling for long messages */
-    background-color: #0a0f27;
+    background-color: transparent; /* Remove background color */
     color: white;
     border-top-left-radius: 50px; /* Maintain the oval shape */
     border-top-right-radius: 50px; /* Maintain the oval shape */
@@ -47,7 +47,7 @@ body {
     display: flex;
     align-items: center;
     padding: 20px;
-    background-color: #0a0f27;
+    background-color: transparent; /* Remove background color */
     border-bottom-left-radius: 50px; /* Maintain the oval shape */
     border-bottom-right-radius: 50px; /* Maintain the oval shape */
 }
@@ -59,6 +59,8 @@ body {
     border: none;
     border-radius: 25px;
     outline: none;
+    background-color: white; /* Optional: change background color of input */
+    color: black; /* Optional: change text color of input */
 }
 
 /* Iframe Styling */
@@ -89,3 +91,4 @@ iframe {
         height: 100%; /* Ensure iframe fills available space on smaller screens */
     }
 }
+
