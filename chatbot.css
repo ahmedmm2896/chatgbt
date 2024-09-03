@@ -19,6 +19,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative; /* Ensures overlay button is positioned correctly */
 }
 
 /* Iframe Styling */
@@ -26,6 +27,17 @@ iframe {
     width: 100%;
     height: 100%;
     border: none;
+}
+
+/* Overlay Button Styling */
+.overlay-button {
+    position: absolute;
+    top: 20px; /* Adjust to match the position of the profile image */
+    left: 20px; /* Adjust to match the position of the profile image */
+    width: 50px; /* Set to the width of the profile image */
+    height: 50px; /* Set to the height of the profile image */
+    cursor: pointer;
+    z-index: 1000; /* Ensure it's above the iframe */
 }
 
 /* Responsive Design for Smaller Screens */
@@ -38,5 +50,12 @@ iframe {
     iframe {
         width: 100%;
         height: calc(100% - 20px); /* Adjust height for padding */
+    }
+
+    .overlay-button {
+        top: 10px;
+        left: 10px;
+        width: 40px; /* Slightly smaller for mobile screens */
+        height: 40px;
     }
 }
