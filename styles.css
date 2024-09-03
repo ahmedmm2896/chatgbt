@@ -53,7 +53,7 @@ header {
     padding: 15px 30px;
     background-color: #0ef;
     border: none;
-    border-radius: 5px;
+    border-radius: 30px; /* Oval shape */
     color: #0a0f27;
     cursor: pointer;
     box-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
@@ -146,7 +146,7 @@ header {
     color: #0a0f27;
     padding: 12px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 30px; /* Oval shape */
     cursor: pointer;
     box-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
     transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
@@ -176,6 +176,37 @@ footer p {
     .try-now {
         font-size: 18px;
         padding: 12px 24px;
+        border-radius: 20px; /* Slightly smaller oval shape */
     }
 
-    .
+    .logo {
+        width: 120px;
+    }
+
+    .slogan {
+        font-size: 32px;
+    }
+
+    .floating-sections {
+        top: 10px;
+        right: 10px;
+    }
+
+    .floating-section {
+        font-size: 14px;
+        padding: 8px 16px;
+        border-radius: 20px; /* Slightly smaller oval shape */
+    }
+
+    .about-us h2, .services h2, .testimonials h2, .contact-us h2 {
+        font-size: 28px;
+    }
+
+    .about-us p, .services p, .testimonials p, .contact-us p {
+        font-size: 18px;
+    }
+
+    .contact-us button {
+        border-radius: 20px; /* Slightly smaller oval shape */
+    }
+}
