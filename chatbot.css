@@ -1,104 +1,124 @@
-/* General Body Styles */
+/* General Chatbot Styling */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     background-color: #0a0f27; /* Dark blue background */
     color: white;
+    overflow: hidden;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
-    justify-content: space-between; /* Ensures the footer stays at the bottom */
-    align-items: center;
 }
 
-/* Header Styles */
-.chatbot-header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #0a0f27; /* Same as body background to blend in */
+header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
 }
 
-/* Logo Styles */
 .logo {
-    width: 60px;
+    width: 150px;
     height: auto;
 }
 
-/* Navigation Buttons */
-.nav-buttons {
+/* Chat Section */
+.chat-container {
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 }
 
-.nav-button {
-    background-color: #0ef; /* Neon color */
+.chat-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 800px;
+    height: 600px; /* Adjust height to your preference */
+    background-color: #091223;
+    border-radius: 50px; /* Oval shape */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.chat-log {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto; /* Allows scrolling for long messages */
+    background-color: #0a0f27;
+    color: white;
+    border-top-left-radius: 50px; /* Maintain the oval shape */
+    border-top-right-radius: 50px; /* Maintain the oval shape */
+}
+
+.chat-footer {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #0a0f27;
+    border-bottom-left-radius: 50px; /* Maintain the oval shape */
+    border-bottom-right-radius: 50px; /* Maintain the oval shape */
+}
+
+.chat-input {
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 18px;
     border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    color: #0a0f27; /* Dark blue text */
-    cursor: pointer;
-    box-shadow: 0 0 10px rgba(14, 239, 255, 0.5); /* Subtle glow */
-    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 25px;
+    outline: none;
+    margin-right: 10px;
 }
 
-.nav-button:hover {
+.send-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #0ef; /* Neon color */
+    color: #0a0f27;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.send-button:hover {
     background-color: #ff69b4; /* Pink on hover */
     color: white;
 }
 
-/* Chat Log Styles */
-.chat-log {
-    flex-grow: 1;
+/* Iframe Styling */
+iframe {
     width: 100%;
-    max-width: 800px;
-    overflow-y: auto;
-    padding: 10px;
-    background-color: #1b2949; /* Slightly lighter blue for contrast */
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-/* Footer and Input Field Styles */
-.chat-footer {
-    width: 100%;
-    max-width: 800px;
-    padding: 10px;
-    background-color: #091223; /* Darker blue for contrast */
-    border-radius: 25px;
-    display: flex;
-    justify-content: center;
-}
-
-.chat-input {
-    width: 800px; /* Wide input field */
-    height: 30px; /* Thinner input field */
-    padding: 10px 20px;
+    height: calc(100% - 60px); /* Adjusting to account for header height */
     border: none;
-    border-radius: 25px; /* Oval shape */
-    background-color: #1b2949; /* Slightly lighter blue */
-    color: white;
-    font-size: 18px;
-    text-align: left;
+    margin-top: 20px;
 }
 
-/* Message Styling */
-.message {
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
-    color: white;
-}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .chat-section {
+        width: 90%;
+        height: auto; /* Adjust to fit smaller screens */
+        border-radius: 30px; /* Slightly less rounded for smaller screens */
+    }
 
-.message.user {
-    background-color: #0ef; /* Neon color for user messages */
-    text-align: right;
-}
+    .chat-log, .chat-footer {
+        border-radius: 30px; /* Adjusted to match new shape */
+    }
 
-.message.bot {
-    background-color: #ff69b4; /* Pink color for bot messages */
-    text-align: left;
-}
+    .chat-input {
+        font-size: 16px;
+    }
 
+    .send-button {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+
+    iframe {
+        height: 100%; /* Ensure iframe fills available space on smaller screens */
+    }
+}
