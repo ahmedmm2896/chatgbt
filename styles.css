@@ -7,6 +7,23 @@ body {
     overflow-x: hidden;
 }
 
+/* Blockquote Styling */
+blockquote {
+    font-family: 'Arial', sans-serif; /* Ensure consistency with the rest of the site */
+    font-size: 22px;
+    line-height: 1.8;
+    color: #0ef;
+    text-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
+    background-color: #091223;
+    padding: 20px;
+    border-left: 5px solid #0ef;
+    margin: 20px 0;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
 header {
     position: absolute;
     top: 20px;
