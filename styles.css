@@ -113,4 +113,69 @@ header {
 .about-us p, .services p, .testimonials p, .contact-us p {
     font-size: 22px;
     line-height: 1.8;
-    max-width:
+    max-width: 800px;
+    margin: 0 auto 40px;
+    color: #0ef;
+    text-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
+}
+
+/* Contact Us Section (Restored to Original) */
+.contact-us form {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.contact-us label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.contact-us input,
+.contact-us textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+.contact-us button {
+    background-color: #0ef;
+    color: #0a0f27;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-us button:hover {
+    background-color: #ff69b4;
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+}
+
+/* Footer */
+footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #091223;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .try-now {
+        font-size: 18px;
+        padding: 12px 24px;
+    }
+
+    .
