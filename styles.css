@@ -1,0 +1,190 @@
+/* General Styling */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #0a0f27; /* Dark blue background */
+    color: white;
+    overflow-x: hidden;
+}
+
+header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    flex-direction: column;
+}
+
+.content {
+    position: relative;
+}
+
+.website-name {
+    font-size: 12px;
+    color: #0ef; /* Neon color */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.slogan {
+    font-size: 48px;
+    color: #0ef; /* Neon color */
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 20px 0;
+    text-shadow: 0 0 10px rgba(14, 239, 255, 0.5); /* Subtle glow */
+}
+
+.try-now {
+    font-size: 24px;
+    padding: 15px 30px;
+    background-color: #0ef; /* Neon color */
+    border: none;
+    border-radius: 5px;
+    color: #0a0f27; /* Dark blue text */
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(14, 239, 255, 0.5); /* Subtle glow */
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.try-now:hover {
+    background-color: #ff69b4; /* Pink on hover */
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.5); /* Pink subtle glow */
+}
+
+/* About Us Section */
+.about-us {
+    padding: 50px 20px;
+    background-color: #091223; /* Slightly darker background */
+    text-align: center;
+}
+
+.about-us h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #0ef; /* Neon color */
+    text-shadow: 0 0 10px rgba(14, 239, 255, 0.5); /* Subtle glow */
+}
+
+.about-us p {
+    font-size: 22px;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    color: #0ef; /* Neon color */
+    text-shadow: 0 0 10px rgba(14, 239, 255, 0.5); /* Subtle glow */
+}
+
+.about-us img {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Contact Us Section */
+.contact-us {
+    padding: 50px 20px;
+    background-color: #0a0f27; /* Same dark blue background */
+    text-align: center;
+}
+
+.contact-us h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.contact-us form {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.contact-us label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.contact-us input,
+.contact-us textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+.contact-us button {
+    background-color: #0ef; /* Neon color */
+    color: #0a0f27; /* Dark blue text */
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(14, 239, 255, 0.5); /* Subtle glow */
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-us button:hover {
+    background-color: #ff69b4; /* Pink on hover */
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.5); /* Pink subtle glow */
+}
+
+/* Footer */
+footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #091223;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .try-now {
+        font-size: 18px;
+        padding: 12px 24px;
+    }
+
+    .logo {
+        width: 120px;
+    }
+
+    .slogan {
+        font-size: 32px;
+    }
+
+    .about-us h2, .contact-us h2 {
+        font-size: 28px;
+    }
+
+    .about-us p {
+        font-size: 18px;
+    }
+
+    .about-us img, .contact-us form {
+        width: 90%;
+    }
+    
+}
