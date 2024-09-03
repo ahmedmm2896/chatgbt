@@ -16,4 +16,14 @@ iframe {
     border: none;
     background-color: transparent; /* Ensure iframe is transparent */
     display: block;
+.overlay-button {
+    position: absolute;
+    top: [Y-Coordinate]; /* Adjust to position the overlay over the profile image */
+    left: [X-Coordinate]; /* Adjust to position the overlay over the profile image */
+    width: [Profile Image Width]; /* Match the profile image width */
+    height: [Profile Image Height]; /* Match the profile image height */
+    cursor: pointer;
+    z-index: 1000; /* Ensure it's above the iframe */
+}
+    
 }
