@@ -3,118 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive AI Chatbot</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #1f2937;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .chat-container {
-            flex-grow: 1;
-            width: 100%;
-            max-width: 800px;
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .message {
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 10px;
-            max-width: 70%;
-        }
-        .message.user {
-            background-color: #4b5563;
-            align-self: flex-end;
-            text-align: right;
-        }
-        .message.bot {
-            background-color: #3b82f6;
-            align-self: flex-start;
-            text-align: left;
-        }
-        .input-container {
-            width: 100%;
-            max-width: 800px;
-            display: flex;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-        .input-container input {
-            flex-grow: 1;
-            padding: 10px;
-            border-radius: 25px;
-            border: none;
-            outline: none;
-            background-color: #374151;
-            color: white;
-            font-size: 16px;
-        }
-        .input-container button {
-            padding: 10px 20px;
-            margin-left: 10px;
-            border-radius: 25px;
-            border: none;
-            background-color: #3b82f6;
-            color: white;
-            cursor: pointer;
-            font-size: 16px;
-        }
-    </style>
+    <title>PharmAI - Home</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="chat-container" id="chat-container"></div>
-    <div class="input-container">
-        <input type="text" id="chatInput" placeholder="Type your message..." />
-        <button id="sendButton">Send</button>
-    </div>
-
-    <script>
-        document.getElementById('sendButton').addEventListener('click', sendMessage);
-        document.getElementById('chatInput').addEventListener('keydown', function(event) {
-            if (event.key === 'Enter') {
-                sendMessage();
-            }
-        });
-
-        function sendMessage() {
-            const inputField = document.getElementById('chatInput');
-            const message = inputField.value.trim();
-
-            if (message === "") return;
-
-            displayMessage('user', message);
-            inputField.value = "";
-
-            fetch('http://localhost:3000/api/message', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ message: message })
-            })
-            .then(response => response.json())
-            .then(data => displayMessage('bot', data.response))
-            .catch(error => displayMessage('bot', 'Sorry, something went wrong.'));
-        }
-
-        function displayMessage(sender, text) {
-            const chatContainer = document.getElementById('chat-container');
-            const messageElement = document.createElement('div');
-            messageElement.classList.add('message', sender);
-            messageElement.textContent = text;
-            chatContainer.appendChild(messageElement);
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-        }
-    </script>
+    <header>
+        <img src="https://i.postimg.cc/7YxLFGtH/image8-1.jpg" alt="PharmAI Logo" class="logo">
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="content">
+            <p class="website-name">PharmAI</p>
+            <h1 class="slogan">UR ONLINE PHARMACIST</h1>
+            <button class="try-now" onclick="window.location.href='chatbot.html'">Try Now</button>
+        </div>
+    </section>
+    
+    <!-- About Us Section -->
+    <section class="about-us">
+        <h2>About Us</h2>
+        <p>Welcome to PharmAI, your digital pharmacist. Our mission is to provide accessible, reliable, and personalized medication guidance at your fingertips. Whether you need information about drug interactions, dosage, or side effects, PharmAI is here to help you make informed decisions about your health. Our team of experts is dedicated to ensuring that you have the most accurate and up-to-date information available.</p>
+        <img src="https://i.postimg.cc/B6C78VT1/image6.jpg" alt="About Us Image 1">
+        <img src="https://i.postimg.cc/sDGPqLM9/image2.jpg" alt="About Us Image 2">
+    </section>
+    
+    <!-- Contact Us Section -->
+    <section class="contact-us">
+        <h2>Contact Us</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 PharmAI. All rights reserved.</p>
+    </footer>
 </body>
 </html>
+          
