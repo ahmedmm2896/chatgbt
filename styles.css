@@ -7,23 +7,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Blockquote Styling */
-blockquote {
-    font-family: 'Arial', sans-serif; /* Ensure consistency with the rest of the site */
-    font-size: 22px;
-    line-height: 1.8;
-    color: #0ef;
-    text-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
-    background-color: #091223;
-    padding: 20px;
-    border-left: 5px solid #0ef;
-    margin: 20px 0;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-}
-
 header {
     position: absolute;
     top: 20px;
@@ -31,7 +14,7 @@ header {
 }
 
 .logo {
-    width: 150px;
+    width: 120px; /* Adjusted size for better fit on mobile */
     height: auto;
 }
 
@@ -43,6 +26,7 @@ header {
     height: 100vh;
     text-align: center;
     flex-direction: column;
+    padding: 20px; /* Added padding to prevent content from touching edges */
 }
 
 .content {
@@ -50,24 +34,24 @@ header {
 }
 
 .website-name {
-    font-size: 12px;
+    font-size: 10px; /* Slightly smaller for mobile */
     color: #0ef;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
 .slogan {
-    font-size: 48px;
+    font-size: 36px; /* Adjusted for smaller screens */
     color: #0ef;
     text-transform: uppercase;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     margin: 20px 0;
     text-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
 }
 
 .try-now {
-    font-size: 24px;
-    padding: 15px 30px;
+    font-size: 20px; /* Adjusted for mobile */
+    padding: 10px 20px;
     background-color: #0ef;
     border: none;
     border-radius: 30px; /* Oval shape */
@@ -86,23 +70,24 @@ header {
 /* Horizontal Floating Sections */
 .floating-sections {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 10px;
+    right: 10px;
     z-index: 1000;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    gap: 10px;
+    gap: 5px;
 }
 
 .floating-section {
     background-color: #0ef;
     color: #0a0f27;
-    padding: 10px 20px;
-    border-radius: 30px; /* Oval shape */
+    padding: 8px 12px;
+    border-radius: 20px; /* Smaller oval shape for mobile */
     text-decoration: none;
     font-weight: bold;
     text-align: center;
+    font-size: 14px; /* Adjusted font size */
     box-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
     transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -115,38 +100,48 @@ header {
 
 /* About Us Section */
 .about-us, .services, .testimonials, .contact-us {
-    padding: 50px 20px;
-    background-color: #0a0f27;
+    padding: 40px 10px; /* Reduced padding for mobile */
+    background-color: #091223;
     text-align: center;
 }
 
 .about-us h2, .services h2, .testimonials h2, .contact-us h2 {
-    font-size: 36px;
+    font-size: 28px; /* Adjusted for smaller screens */
     margin-bottom: 20px;
     color: #0ef;
     text-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
 }
 
 .about-us p, .services p, .testimonials p, .contact-us p {
-    font-size: 22px;
-    line-height: 1.8;
-    max-width: 800px;
-    margin: 0 auto 40px;
+    font-size: 18px; /* Adjusted font size */
+    line-height: 1.6;
+    max-width: 100%; /* Ensure text fits within the screen width */
+    margin: 0 auto 30px;
     color: #0ef;
     text-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
 }
 
-/* Contact Us Section (Restored to Original) */
+.about-us img, .contact-us img {
+    width: 100%; /* Make images responsive */
+    max-width: 300px; /* Limit the maximum width for mobile */
+    height: auto;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Contact Us Form */
 .contact-us form {
-    max-width: 600px;
+    max-width: 100%; /* Ensure form fits within screen width */
     margin: 0 auto;
     text-align: left;
+    padding: 10px; /* Added padding for better spacing on mobile */
 }
 
 .contact-us label {
     display: block;
     margin-bottom: 5px;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .contact-us input,
@@ -156,6 +151,7 @@ header {
     margin-bottom: 20px;
     border: none;
     border-radius: 5px;
+    font-size: 16px; /* Adjusted font size */
 }
 
 .contact-us button {
@@ -177,7 +173,7 @@ header {
 
 /* Footer */
 footer {
-    padding: 20px;
+    padding: 20px 10px;
     text-align: center;
     background-color: #091223;
 }
@@ -188,20 +184,14 @@ footer p {
     color: #ccc;
 }
 
-/* Responsive Design */
+/* Responsive Design for Smaller Screens */
 @media (max-width: 768px) {
-    .try-now {
-        font-size: 18px;
-        padding: 12px 24px;
-        border-radius: 20px; /* Slightly smaller oval shape */
-    }
-
     .logo {
-        width: 120px;
+        width: 100px;
     }
 
     .slogan {
-        font-size: 32px;
+        font-size: 28px;
     }
 
     .floating-sections {
@@ -210,20 +200,21 @@ footer p {
     }
 
     .floating-section {
-        font-size: 14px;
-        padding: 8px 16px;
-        border-radius: 20px; /* Slightly smaller oval shape */
+        font-size: 12px;
+        padding: 6px 10px;
+        border-radius: 15px; /* Smaller oval shape */
     }
 
     .about-us h2, .services h2, .testimonials h2, .contact-us h2 {
-        font-size: 28px;
+        font-size: 24px;
     }
 
     .about-us p, .services p, .testimonials p, .contact-us p {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .contact-us button {
         border-radius: 20px; /* Slightly smaller oval shape */
     }
 }
+
