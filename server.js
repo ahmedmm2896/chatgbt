@@ -1,5 +1,5 @@
-const express = require('express');
 const connectDB = require('./config/db');  // Make sure this line only appears once
+const express = require('express');
 const authRoutes = require('./routes/auth');
 const bodyParser = require('body-parser');
 const cors = require('cors');
