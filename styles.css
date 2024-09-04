@@ -34,31 +34,42 @@ header {
     z-index: 1000; /* Ensure it stays on top */
 }
 
-/* Auth Buttons Styling (Login and Sign Up) */
-.auth-buttons {
-    position: absolute;
-    top: 20px;
-    right: 80px; /* Shift them to the left to make space for sidebar icon */
-    display: flex;
-    gap: 10px; /* Space between Login and Sign Up buttons */
+/* Sidebar Styling */
+.sidebar {
+    height: 100%; /* Full-height */
+    width: 0; /* Initial width of sidebar */
+    position: fixed; /* Fixed sidebar (stays in place) */
+    top: 0;
+    left: 0;
+    background-color: #091223; /* Dark blue */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* Smooth opening and closing effect */
+    padding-top: 60px; /* Space at the top */
 }
 
-.auth-buttons button {
-    background-color: #0ef; /* Neon color */
-    color: #0a0f27;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 30px; /* Oval shape */
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
-    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #0ef; /* Neon color */
+    display: block;
+    transition: 0.3s;
 }
 
-.auth-buttons button:hover {
-    background-color: #ff69b4; /* Pink on hover */
+.sidebar a:hover {
+    background-color: #ff69b4; /* Pink hover effect */
     color: white;
-    box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
 }
 
 /* Floating Sections */
@@ -162,6 +173,7 @@ header {
     margin: 0 auto;
 }
 
+/* About Us Images */
 .about-us img {
     width: 100%;
     max-width: 600px;
@@ -272,7 +284,7 @@ header {
 }
 
 .content-faq p {
-    font-size: 16px; /* Smaller font */
+    font-size: 16px; /* Smaller font
     color: #fff;
     padding: 10px 0;
 }
@@ -285,5 +297,169 @@ header {
 }
 
 .contact-us h2 {
-    font-size: 
+    font-size: 36px;
+    color: #0ef;
+    text-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
+    margin-bottom: 20px;
+}
 
+.contact-us form {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+    display: flex;
+    flex-direction: column; /* Ensure form fields are displayed vertically */
+}
+
+.contact-us label {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #0ef;
+}
+
+.contact-us input,
+.contact-us textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+.contact-us button {
+    background-color: #0ef;
+    color: #0a0f27;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 30px; /* Oval shape */
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-us button:hover {
+    background-color: #ff69b4;
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+}
+
+/* Auth Buttons Styling (Login and Sign Up) */
+.auth-buttons {
+    position: absolute;
+    top: 20px;
+    right: 80px; /* Shift them to the left to make space for sidebar icon */
+    display: flex;
+    gap: 10px; /* Space between Login and Sign Up buttons */
+}
+
+.auth-buttons button {
+    background-color: #0ef; /* Neon color */
+    color: #0a0f27;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px; /* Oval shape */
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-buttons button:hover {
+    background-color: #ff69b4; /* Pink on hover */
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+}
+
+/* Auth Section Styling (for login and sign-up forms) */
+.auth-section {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #0a0f27;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.auth-section h2 {
+    font-size: 28px;
+    color: #0ef;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
+}
+
+.auth-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.auth-section label {
+    font-size: 16px;
+    color: #fff;
+}
+
+.auth-section input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.auth-section button {
+    padding: 12px 20px;
+    background-color: #0ef;
+    color: #0a0f27;
+    border: none;
+    border-radius: 30px; /* Oval button */
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-section button:hover {
+    background-color: #ff69b4;
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+}
+
+/* Footer */
+footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #091223;
+    color: #ccc;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .logo {
+        width: 120px;
+    }
+
+    .slogan {
+        font-size: 32px;
+    }
+
+    .floating-sections {
+        top: 10px;
+        right: 10px;
+    }
+
+    .floating-section {
+        font-size: 14px;
+        padding: 8px 16px;
+        border-radius: 20px; /* Slightly smaller oval shape */
+    }
+
+    .about-us h2, .services h2, .testimonials h2, .contact-us h2 {
+        font-size: 28px;
+    }
+
+    .about-us p, .services p, .testimonials p, .contact-us p {
+        font-size: 18px;
+    }
+
+    .contact-us button {
+        border-radius: 20px; /* Slightly smaller oval shape */
+    }
+}
