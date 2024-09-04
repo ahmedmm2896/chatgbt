@@ -7,6 +7,20 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Sidebar Section -->
+    <div id="sidebar" class="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">×</button>
+        <a href="index.html">Home</a> <!-- Home Section -->
+        <a href="#about-us">About Us</a>
+        <a href="#services">Services</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact-us">Contact Us</a>
+    </div>
+
+    <!-- Open Button for Sidebar -->
+    <button class="open-btn" onclick="toggleSidebar()">☰</button>
+
     <section class="auth-section">
         <h2>Login to PharmAI</h2>
         <form action="#" method="POST">
@@ -19,5 +33,16 @@
             <button type="submit">Login</button>
         </form>
     </section>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            if (sidebar.style.width === "250px") {
+                sidebar.style.width = "0";
+            } else {
+                sidebar.style.width = "250px";
+            }
+        }
+    </script>
 </body>
 </html>
