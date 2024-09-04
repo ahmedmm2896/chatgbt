@@ -218,31 +218,31 @@ header {
 
 /* FAQ Section */
 .faq {
-    padding: 50px 20px;
-    background-color: #091223; /* Dark blue background */
+    padding: 30px 15px;
+    background-color: #0a0f27; /* Match main background */
     color: white;
     text-align: center;
 }
 
 .faq h2 {
-    font-size: 36px;
+    font-size: 28px; /* Smaller title size */
     color: #0ef; /* Neon color */
     text-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .collapsible {
     background-color: #0ef; /* Neon color */
     color: #0a0f27; /* Dark text */
     cursor: pointer;
-    padding: 18px;
+    padding: 12px; /* Reduce padding */
     width: 100%;
     border: none;
     text-align: left;
     outline: none;
-    font-size: 20px;
-    margin-bottom: 10px;
-    border-radius: 10px;
+    font-size: 18px; /* Smaller font size */
+    margin-bottom: 8px;
+    border-radius: 8px;
     box-shadow: 0 0 10px rgba(14, 239, 255, 0.5); /* Subtle glow */
     transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -258,8 +258,8 @@ header {
 }
 
 .content-faq {
-    padding: 0 18px;
-    background-color: #091223;
+    padding: 0 15px;
+    background-color: #0a0f27;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
@@ -267,16 +267,17 @@ header {
 }
 
 .content-faq p {
-    font-size: 18px;
+    font-size: 16px; /* Smaller font */
     color: #fff;
-    padding: 0 0 15px;
+    padding: 10px 0;
 }
+
 
 /* Footer */
 footer {
     padding: 20px;
     text-align: center;
-    background-color: #091223;
+    background-color: #0a0f27;
     color: #ccc;
 }
 
