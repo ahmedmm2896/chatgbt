@@ -1,7 +1,3 @@
-app.use((err, req, res, next) => {
-  console.error(err.stack);  // This will log the error in the terminal
-  res.status(500).send('Something went wrong!');  // This sends a generic error message to the browser
-});
 const connectDB = require('./config/db');  // Make sure this line only appears once
 const express = require('express');
 const authRoutes = require('./routes/auth');
