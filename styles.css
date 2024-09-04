@@ -175,13 +175,7 @@ header {
 
 /* About Us Images */
 .about-us img {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    margin: 20px auto;
-    display: block;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    display: none; /* Hidden as per the request to move to Services */
 }
 
 /* Services Section */
@@ -205,6 +199,17 @@ header {
     text-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
     max-width: 800px;
     margin: 0 auto;
+}
+
+/* Moved About Us Images to Services Section */
+.services img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin: 20px auto;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 /* Testimonials Section */
@@ -236,42 +241,42 @@ header {
 /* FAQ Section */
 .faq {
     padding: 30px 15px;
-    background-color: #0a0f27; /* Match main background */
+    background-color: #0a0f27;
     color: white;
     text-align: center;
 }
 
 .faq h2 {
-    font-size: 28px; /* Smaller title size */
-    color: #0ef; /* Neon color */
+    font-size: 28px;
+    color: #0ef;
     text-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
     margin-bottom: 20px;
 }
 
 .collapsible {
-    background-color: #0ef; /* Neon color */
-    color: #0a0f27; /* Dark text */
+    background-color: #0ef;
+    color: #0a0f27;
     cursor: pointer;
-    padding: 12px; /* Reduce padding */
+    padding: 12px;
     width: 100%;
     border: none;
     text-align: left;
     outline: none;
-    font-size: 18px; /* Smaller font size */
+    font-size: 18px;
     margin-bottom: 8px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(14, 239, 255, 0.5); /* Subtle glow */
+    box-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .collapsible:hover {
-    background-color: #ff69b4; /* Pink on hover */
+    background-color: #ff69b4;
     color: white;
-    box-shadow: 0 0 15px rgba(255, 105, 180, 0.5); /* Pink glow */
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
 }
 
 .active, .collapsible:after {
-    background-color: #ff69b4; /* Change color when active */
+    background-color: #ff69b4;
 }
 
 .content-faq {
@@ -284,7 +289,7 @@ header {
 }
 
 .content-faq p {
-    font-size: 16px; /* Smaller font */
+    font-size: 16px;
     color: #fff;
     padding: 10px 0;
 }
@@ -308,7 +313,7 @@ header {
     margin: 0 auto;
     text-align: left;
     display: flex;
-    flex-direction: column; /* Ensure form fields are displayed vertically */
+    flex-direction: column;
 }
 
 .contact-us label {
@@ -331,7 +336,7 @@ header {
     color: #0a0f27;
     padding: 12px 20px;
     border: none;
-    border-radius: 30px; /* Oval shape */
+    border-radius: 30px;
     cursor: pointer;
     box-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
     transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
@@ -347,17 +352,17 @@ header {
 .auth-buttons {
     position: absolute;
     top: 20px;
-    right: 80px; /* Shift them to the left to make space for sidebar icon */
+    right: 80px;
     display: flex;
-    gap: 10px; /* Space between Login and Sign Up buttons */
+    gap: 10px;
 }
 
 .auth-buttons button {
-    background-color: #0ef; /* Neon color */
+    background-color: #0ef;
     color: #0a0f27;
     padding: 10px 20px;
     border: none;
-    border-radius: 30px; /* Oval shape */
+    border-radius: 30px;
     font-size: 16px;
     cursor: pointer;
     box-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
@@ -365,7 +370,7 @@ header {
 }
 
 .auth-buttons button:hover {
-    background-color: #ff69b4; /* Pink on hover */
+    background-color: #ff69b4;
     color: white;
     box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
 }
@@ -411,7 +416,7 @@ header {
     background-color: #0ef;
     color: #0a0f27;
     border: none;
-    border-radius: 30px; /* Oval button */
+    border-radius: 30px;
     cursor: pointer;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -448,7 +453,7 @@ footer {
     .floating-section {
         font-size: 14px;
         padding: 8px 16px;
-        border-radius: 20px; /* Slightly smaller oval shape */
+        border-radius: 20px;
     }
 
     .about-us h2, .services h2, .testimonials h2, .contact-us h2 {
@@ -460,6 +465,6 @@ footer {
     }
 
     .contact-us button {
-        border-radius: 20px; /* Slightly smaller oval shape */
+        border-radius: 20px;
     }
 }
