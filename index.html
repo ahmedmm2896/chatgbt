@@ -9,16 +9,16 @@
 <body>
     <header>
         <img src="https://i.postimg.cc/0Nw1x3fG/image8-1-removebg-preview.png" alt="PharmAI Logo" class="logo">
-        <button class="open-btn" onclick="openSidebar()">☰</button>
+        <button class="open-btn" onclick="toggleSidebar()">☰</button> <!-- Updated toggle functionality -->
     </header>
 
     <!-- Sidebar Section -->
     <div id="sidebar" class="sidebar">
-        <button class="close-btn" onclick="closeSidebar()">×</button>
+        <button class="close-btn" onclick="toggleSidebar()">×</button> <!-- Updated toggle functionality -->
         <a href="#about-us">About Us</a>
         <a href="#services">Services</a>
         <a href="#testimonials">Testimonials</a>
-        <a href="#faq">FAQ</a> <!-- FAQ Link -->
+        <a href="#faq">FAQ</a>
         <a href="#contact-us">Contact Us</a>
     </div>
 
@@ -91,14 +91,15 @@
         <p>&copy; 2024 PharmAI. All rights reserved.</p>
     </footer>
 
-    <!-- Sidebar Toggle Scripts -->
+    <!-- Sidebar Toggle Script -->
     <script>
-        function openSidebar() {
-            document.getElementById("sidebar").style.width = "250px";
-        }
-
-        function closeSidebar() {
-            document.getElementById("sidebar").style.width = "0";
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            if (sidebar.style.width === "250px") {
+                sidebar.style.width = "0";
+            } else {
+                sidebar.style.width = "250px";
+            }
         }
 
         // Collapsible FAQ functionality
