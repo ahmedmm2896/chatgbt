@@ -256,5 +256,56 @@ footer {
     .contact-us button {
         border-radius: 20px; /* Slightly smaller oval shape */
     }
+
+    /* FAQ Section */
+.faq {
+    padding: 50px 20px;
+    background-color: #091223; /* Dark blue background */
+    color: white;
+    text-align: center;
+}
+
+.faq h2 {
+    font-size: 36px;
+    color: #0ef; /* Neon color */
+    text-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
+    margin-bottom: 30px;
+}
+
+.collapsible {
+    background-color: #0ef; /* Neon color */
+    color: #0a0f27; /* Dark text */
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(14, 239, 255, 0.5); /* Subtle glow */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.collapsible:hover {
+    background-color: #ff69b4; /* Pink on hover */
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.5); /* Pink glow */
+}
+
+.active, .collapsible:after {
+    background-color: #ff69b4; /* Change color when active */
+}
+
+.content-faq {
+    padding: 0 18px;
+    background-color: #091223;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    margin-bottom: 10px;
+}
+
 }
 
