@@ -3,6 +3,12 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const router = express.Router();
+const auth = require('../middleware/auth'); // Import the middleware
+
+// Example protected route
+router.get('/profile', auth, (req, res) => {
+  res.send('Welcome to your profile');
+});
 
 // JWT secret (you should store this in environment variables)
 const JWT_SECRET = 'your_jwt_secret';
