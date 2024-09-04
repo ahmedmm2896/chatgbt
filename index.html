@@ -9,8 +9,26 @@
 <body>
     <header>
         <img src="https://i.postimg.cc/0Nw1x3fG/image8-1-removebg-preview.png" alt="PharmAI Logo" class="logo">
+        <button class="open-btn" onclick="openSidebar()">☰</button> <!-- Button to open sidebar -->
     </header>
-    
+
+    <!-- Sidebar Section -->
+    <div id="sidebar" class="sidebar">
+        <button class="close-btn" onclick="closeSidebar()">×</button>
+        <a href="#about-us">About Us</a>
+        <a href="#services">Services</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact-us">Contact Us</a>
+    </div>
+
+    <!-- Floating Sections -->
+    <div class="floating-sections">
+        <a href="#about-us" class="floating-section">About Us</a>
+        <a href="#services" class="floating-section">Services</a>
+        <a href="#testimonials" class="floating-section">Testimonials</a>
+        <a href="#contact-us" class="floating-section">Contact Us</a>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="content">
@@ -19,22 +37,30 @@
             <button class="try-now" onclick="window.location.href='chatbot.html'">Try Now</button>
         </div>
     </section>
-    
-    <!-- Horizontal Floating Sections -->
-    <div class="floating-sections">
-        <a href="#about-us" class="floating-section">About Us</a>
-        <a href="#services" class="floating-section">Services</a>
-        <a href="#testimonials" class="floating-section">Testimonials</a>
-        <a href="#contact-us" class="floating-section">Contact Us</a>
-    </div>
-    
+
     <!-- About Us Section -->
     <section id="about-us" class="about-us">
         <h2>About Us</h2>
-        <p>Welcome to PharmAI, your digital pharmacist. Our mission is to provide accessible, reliable, and personalized medication guidance at your fingertips. Whether you need information about drug interactions, dosage, or side effects, PharmAI is here to help you make informed decisions about your health. Our team of experts is dedicated to ensuring that you have the most accurate and up-to-date information available.</p>
-        <img src="https://i.postimg.cc/B6C78VT1/image6.jpg" alt="About Us Image 1">
-        <img src="https://i.postimg.cc/sDGPqLM9/image2.jpg" alt="About Us Image 2">
+        <p>Welcome to PharmAI, your digital pharmacist. Our mission is to provide accessible, reliable, and personalized medication guidance at your fingertips.</p>
     </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 PharmAI. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function openSidebar() {
+            document.getElementById("sidebar").style.width = "250px";
+        }
+
+        function closeSidebar() {
+            document.getElementById("sidebar").style.width = "0";
+        }
+    </script>
+</body>
+</html>
+
     
     <!-- Services Section -->
     <section id="services" class="services">
