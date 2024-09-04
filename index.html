@@ -9,7 +9,7 @@
 <body>
     <header>
         <img src="https://i.postimg.cc/0Nw1x3fG/image8-1-removebg-preview.png" alt="PharmAI Logo" class="logo">
-        <button class="open-btn" onclick="openSidebar()">☰</button> <!-- Button to open sidebar -->
+        <button class="open-btn" onclick="openSidebar()">☰</button>
     </header>
 
     <!-- Sidebar Section -->
@@ -18,15 +18,8 @@
         <a href="#about-us">About Us</a>
         <a href="#services">Services</a>
         <a href="#testimonials">Testimonials</a>
+        <a href="#faq">FAQ</a> <!-- FAQ Link -->
         <a href="#contact-us">Contact Us</a>
-    </div>
-
-    <!-- Floating Sections -->
-    <div class="floating-sections">
-        <a href="#about-us" class="floating-section">About Us</a>
-        <a href="#services" class="floating-section">Services</a>
-        <a href="#testimonials" class="floating-section">Testimonials</a>
-        <a href="#contact-us" class="floating-section">Contact Us</a>
     </div>
 
     <!-- Hero Section -->
@@ -36,6 +29,27 @@
             <h1 class="slogan">UR ONLINE PHARMACIST</h1>
             <button class="try-now" onclick="window.location.href='chatbot.html'">Try Now</button>
         </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about-us" class="about-us">
+        <h2>About Us</h2>
+        <p>Welcome to PharmAI, your digital pharmacist. Our mission is to provide accessible, reliable, and personalized medication guidance at your fingertips.</p>
+        <img src="https://i.postimg.cc/B6C78VT1/image6.jpg" alt="About Us Image 1">
+        <img src="https://i.postimg.cc/sDGPqLM9/image2.jpg" alt="About Us Image 2">
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2>Our Services</h2>
+        <p>At PharmAI, we offer a wide range of services to help you manage your health. From personalized medication advice to real-time interaction with our AI-powered pharmacist, we are here to support your health journey.</p>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <h2>What our customers say</h2>
+        <blockquote>"PharmAI made my medication management so easy!"</blockquote>
+        <blockquote>"The chatbot provided excellent advice on prescriptions."</blockquote>
     </section>
 
     <!-- FAQ Section -->
@@ -58,10 +72,18 @@
         </div>
     </section>
 
-    <!-- About Us Section -->
-    <section id="about-us" class="about-us">
-        <h2>About Us</h2>
-        <p>Welcome to PharmAI, your digital pharmacist. Our mission is to provide accessible, reliable, and personalized medication guidance at your fingertips.</p>
+    <!-- Contact Us Section -->
+    <section id="contact-us" class="contact-us">
+        <h2>Contact Us</h2>
+        <form action="https://formspree.io/f/movabeze" method="POST">
+            <label for="email">Your email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Your message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            
+            <button type="submit">Send</button>
+        </form>
     </section>
 
     <!-- Footer -->
@@ -69,6 +91,7 @@
         <p>&copy; 2024 PharmAI. All rights reserved.</p>
     </footer>
 
+    <!-- Sidebar Toggle Scripts -->
     <script>
         function openSidebar() {
             document.getElementById("sidebar").style.width = "250px";
@@ -77,44 +100,22 @@
         function closeSidebar() {
             document.getElementById("sidebar").style.width = "0";
         }
-    </script>
-</body>
-</html>
 
-    
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <h2>Our Services</h2>
-        <p>At PharmAI, we offer a wide range of services to help you manage your health. From personalized medication advice to real-time interaction with our AI-powered pharmacist, we are here to support your health journey.</p>
-    </section>
-    
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
-        <h2>Testimonials</h2>
-        <p>Our users love PharmAI! Here’s what they have to say: "PharmAI has made managing my prescriptions so much easier!", "The advice I received was spot on and incredibly helpful."</p>
-    </section>
-    
-    <!-- Contact Us Section with Formspree -->
-    <section id="contact-us" class="contact-us">
-        <h2>Contact Us</h2>
-        <form
-          action="https://formspree.io/f/movabeze"
-          method="POST"
-        >
-            <label for="email">Your email:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="message">Your message:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-            
-            <!-- your other form fields go here -->
-            <button type="submit">Send</button>
-        </form>
-    </section>
-    
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 PharmAI. All rights reserved.</p>
-    </footer>
+        // Collapsible FAQ functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const collapsibleElements = document.querySelectorAll('.collapsible');
+            collapsibleElements.forEach((element) => {
+                element.addEventListener('click', function () {
+                    this.classList.toggle('active');
+                    const content = this.nextElementSibling;
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
