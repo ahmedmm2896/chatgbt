@@ -366,3 +366,56 @@ header {
     box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
 }
 
+/* Auth Section Styling */
+.auth-section {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #0a0f27;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.auth-section h2 {
+    font-size: 28px;
+    color: #0ef;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
+}
+
+.auth-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.auth-section label {
+    font-size: 16px;
+    color: #fff;
+}
+
+.auth-section input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.auth-section button {
+    padding: 12px 20px;
+    background-color: #0ef;
+    color: #0a0f27;
+    border: none;
+    border-radius: 30px; /* Oval button */
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-section button:hover {
+    background-color: #ff69b4;
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+}
+
+
