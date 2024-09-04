@@ -136,7 +136,7 @@ header {
     color: #0a0f27;
     cursor: pointer;
     box-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
-    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease
 }
 
 .try-now:hover {
