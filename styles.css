@@ -165,8 +165,20 @@ header {
     color: #0ef;
     text-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
     max-width: 800px;
-    margin: 0 auto;
+    margin: 0 auto 40px;
 }
+
+/* Fix for About Us Images */
+.about-us img {
+    width: 100%;
+    max-width: 600px; /* Ensures the image doesn't grow too large */
+    height: auto; /* Maintain aspect ratio */
+    margin: 20px auto;
+    display: block; /* Center the images */
+    border-radius: 10px; /* Rounded corners for a cleaner look */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Add a subtle shadow */
+}
+
 
 /* Services Section */
 .services {
