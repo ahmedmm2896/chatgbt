@@ -216,48 +216,7 @@ header {
     box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
 }
 
-/* Footer */
-footer {
-    padding: 20px;
-    text-align: center;
-    background-color: #091223;
-    color: #ccc;
-}
-
-/* Responsive Design for Smaller Screens */
-@media (max-width: 768px) {
-    .logo {
-        width: 120px;
-    }
-
-    .slogan {
-        font-size: 32px;
-    }
-
-    .floating-sections {
-        top: 10px;
-        right: 10px;
-    }
-
-    .floating-section {
-        font-size: 14px;
-        padding: 8px 16px;
-        border-radius: 20px; /* Slightly smaller oval shape */
-    }
-
-    .about-us h2, .services h2, .testimonials h2, .contact-us h2 {
-        font-size: 28px;
-    }
-
-    .about-us p, .services p, .testimonials p, .contact-us p {
-        font-size: 18px;
-    }
-
-    .contact-us button {
-        border-radius: 20px; /* Slightly smaller oval shape */
-    }
-
-    /* FAQ Section */
+/* FAQ Section */
 .faq {
     padding: 50px 20px;
     background-color: #091223; /* Dark blue background */
@@ -307,5 +266,36 @@ footer {
     margin-bottom: 10px;
 }
 
+.content-faq p {
+    font-size: 18px;
+    color: #fff;
+    padding: 0 0 15px;
 }
 
+/* Footer */
+footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #091223;
+    color: #ccc;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .logo {
+        width: 120px;
+    }
+
+    .slogan {
+        font-size: 32px;
+    }
+
+    .floating-sections {
+        top: 10px;
+        right: 10px;
+    }
+
+    .floating-section {
+        font-size: 14px;
+        padding: 8px 16px;
+        border-radius: 
