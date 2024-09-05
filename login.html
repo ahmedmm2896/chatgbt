@@ -27,7 +27,7 @@
 
     <section class="auth-section">
         <h2>Login to PharmAI</h2>
-        <form id="loginForm">
+        <form id="loginForm" onsubmit="return false;"> <!-- Prevent default form submission -->
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
 
@@ -39,6 +39,23 @@
     </section>
 
     <script>
+        document.getElementById('loginForm').addEventListener('submit', async function (e) {
+            e.preventDefault(); // Prevent form from refreshing the page
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
+                // Successful login
+                alert('Login successful');
+                window.location.href = 'dashboard.html'; // Redirect to dashboard after login
+            } catch (error) {
+                console.error("Error during login:", error.message);
+                alert("Login failed: " + error.message);
+            }
+        });
+
         function toggleSidebar() {
             const sidebar = document.getElementById("sidebar");
             sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
