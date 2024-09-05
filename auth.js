@@ -1,5 +1,14 @@
-import { auth } from './firebaseConfig.js';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js";
+// Ensure Firebase is properly initialized
+const firebaseConfig = {
+    apiKey: "your_actual_api_key_here",
+    authDomain: "your_actual_auth_domain_here",
+    projectId: "your_actual_project_id_here",
+    storageBucket: "your_actual_storage_bucket_here",
+    messagingSenderId: "your_actual_messaging_sender_id_here",
+    appId: "your_actual_app_id_here"
+};
+
+firebase.initializeApp(firebaseConfig);
 
 // Handle Sign-Up
 const signupForm = document.getElementById('signupForm');
@@ -9,9 +18,11 @@ if (signupForm) {
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
-        createUserWithEmailAndPassword(auth, email, password)
+        firebase.auth().createUserWithEmailAndPassword(email, password)
             .then((userCredential) => {
-                console.log('User signed up:', userCredential.user);
+                // Signed up successfully
+                const user = userCredential.user;
+                console.log('User signed up:', user);
                 window.location.href = 'login.html';  // Redirect to login page
             })
             .catch((error) => {
@@ -28,9 +39,11 @@ if (loginForm) {
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
-        signInWithEmailAndPassword(auth, email, password)
+        firebase.auth().signInWithEmailAndPassword(email, password)
             .then((userCredential) => {
-                console.log('User logged in:', userCredential.user);
+                // Logged in successfully
+                const user = userCredential.user;
+                console.log('User logged in:', user);
                 window.location.href = 'dashboard.html';  // Redirect to dashboard
             })
             .catch((error) => {
@@ -39,9 +52,22 @@ if (loginForm) {
     });
 }
 
+// Handle Logout (optional if you want to add logout functionality here)
+const logoutBtn = document.getElementById('logoutBtn');
+if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+        firebase.auth().signOut().then(() => {
+            window.location.href = 'login.html';  // Redirect to login after logout
+        }).catch((error) => {
+            console.error("Error during logout:", error);
+        });
+    });
+}
+
 // Check user auth state for dashboard protection
-onAuthStateChanged(auth, (user) => {
+firebase.auth().onAuthStateChanged((user) => {
     if (!user && window.location.pathname.includes('dashboard.html')) {
+        // Redirect to login if not authenticated
         window.location.href = 'login.html';
     }
 });
