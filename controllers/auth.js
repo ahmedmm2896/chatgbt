@@ -84,3 +84,7 @@ exports.getUser = async (req, res) => {
     res.status(500).send('Server error');
   }
 };
+exports.register = async (req, res) => {
+    console.log('Received signup request:', req.body);  // Log incoming request data
+    // Rest of the signup logic...
+};
