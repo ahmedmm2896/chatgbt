@@ -1,9 +1,9 @@
-const User = require('../models/user');
+const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-// Register a new user
-exports.register = async (req, res) => {
+// Register a new user (Sign Up)
+exports.signup = async (req, res) => {
     const { name, email, password } = req.body;
 
     try {
@@ -20,7 +20,7 @@ exports.register = async (req, res) => {
             password
         });
 
-        // Hash password before saving
+        // Hash password
         const salt = await bcrypt.genSalt(10);
         user.password = await bcrypt.hash(password, salt);
 
@@ -34,15 +34,10 @@ exports.register = async (req, res) => {
             }
         };
 
-        jwt.sign(
-            payload,
-            'your_jwt_secret', // replace with your own secret key or use process.env.JWT_SECRET
-            { expiresIn: '1h' },
-            (err, token) => {
-                if (err) throw err;
-                res.json({ token });
-            }
-        );
+        jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' }, (err, token) => {
+            if (err) throw err;
+            res.status(200).json({ token });
+        });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server error');
@@ -73,15 +68,10 @@ exports.login = async (req, res) => {
             }
         };
 
-        jwt.sign(
-            payload,
-            'your_jwt_secret', // replace with your own secret key or use process.env.JWT_SECRET
-            { expiresIn: '1h' },
-            (err, token) => {
-                if (err) throw err;
-                res.json({ token });
-            }
-        );
+        jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' }, (err, token) => {
+            if (err) throw err;
+            res.status(200).json({ token });
+        });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server error');
@@ -92,7 +82,7 @@ exports.login = async (req, res) => {
 exports.getUser = async (req, res) => {
     try {
         const user = await User.findById(req.user.id).select('-password');
-        res.json(user);
+        res.status(200).json(user);
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server error');
