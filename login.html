@@ -10,7 +10,7 @@
     <!-- Sidebar Section -->
     <div id="sidebar" class="sidebar">
         <button class="close-btn" onclick="toggleSidebar()">×</button>
-        <a href="index.html">Home</a>
+        <a href="index.html">Home</a> <!-- Home Section -->
         <a href="#about-us">About Us</a>
         <a href="#services">Services</a>
         <a href="#testimonials">Testimonials</a>
@@ -35,38 +35,36 @@
     </section>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', async (event) => {
-            event.preventDefault(); // Prevent the form from submitting the default way
-
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
-            try {
-                const response = await fetch('http://localhost:5000/api/auth/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ email, password })
-                });
+            const response = await fetch('http://localhost:5000/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
 
-                if (response.ok) {
-                    const data = await response.json();
-                    alert('Login successful!');
-                    // Redirect or handle login success here
-                } else {
-                    const errorData = await response.json();
-                    alert(`Error: ${errorData.msg}`);
-                }
-            } catch (error) {
-                console.error('Error logging in:', error);
+            const data = await response.json();
+
+            if (response.ok) {
+                window.location.href = 'dashboard.html'; // Redirect to dashboard after successful login
+            } else {
+                alert(data.message || 'Login failed');
             }
         });
 
         function toggleSidebar() {
             const sidebar = document.getElementById("sidebar");
-            sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+            if (sidebar.style.width === "250px") {
+                sidebar.style.width = "0";
+            } else {
+                sidebar.style.width = "250px";
+            }
         }
     </script>
 </body>
 </html>
+
