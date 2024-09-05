@@ -7,40 +7,35 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Sidebar Section -->
-    <div id="sidebar" class="sidebar">
-        <button class="close-btn" onclick="toggleSidebar()">×</button>
-        <a href="index.html">Home</a>
-        <a href="#about-us">About Us</a>
-        <a href="#services">Services</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact-us">Contact Us</a>
-    </div>
-
-    <!-- Open Button for Sidebar -->
-    <button class="open-btn" onclick="toggleSidebar()">☰</button>
-
     <section class="auth-section">
         <h2>Login to PharmAI</h2>
         <form id="loginForm">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
-
+            
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
-
+            
             <button type="submit">Login</button>
         </form>
     </section>
 
-    <script src="auth.js"></script>
-    <script>
-        function toggleSidebar() {
-            const sidebar = document.getElementById("sidebar");
-            sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
-        }
+    <script type="module">
+        import { auth, signInWithEmailAndPassword } from './firebaseConfig.js';
+
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                // Redirect to dashboard after successful login
+                window.location.href = 'dashboard.html';
+            } catch (error) {
+                alert('Login failed: ' + error.message);
+            }
+        });
     </script>
 </body>
 </html>
-
