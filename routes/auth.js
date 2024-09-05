@@ -4,6 +4,13 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const router = express.Router();
 const auth = require('../middleware/auth'); // Import the middleware
+const auth = require('../controllers/auth'); // import the controllers
+
+router.post('/signup', auth.signup);
+
+router.post('/login', auth.login);
+
+router.get('/user', auth, auth.getUser);
 
 // Example protected route
 router.get('/profile', auth, (req, res) => {
