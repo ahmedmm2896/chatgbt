@@ -7,36 +7,20 @@ exports.signup = async (req, res) => {
     const { name, email, password } = req.body;
 
     try {
-        // Check if user already exists
         let user = await User.findOne({ email });
         if (user) {
             return res.status(400).json({ msg: 'User already exists' });
         }
 
-        // Create new user
-        user = new User({
-            name,
-            email,
-            password
-        });
-
-        // Hash password
+        user = new User({ name, email, password });
         const salt = await bcrypt.genSalt(10);
         user.password = await bcrypt.hash(password, salt);
-
-        // Save user to the database
         await user.save();
 
-        // Create and sign JWT
-        const payload = {
-            user: {
-                id: user.id
-            }
-        };
-
+        const payload = { user: { id: user.id } };
         jwt.sign(
             payload,
-            process.env.JWT_SECRET, // Use the environment variable for the secret
+            process.env.JWT_SECRET,
             { expiresIn: '1h' },
             (err, token) => {
                 if (err) throw err;
@@ -54,35 +38,20 @@ exports.login = async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        // Check if the user exists
         let user = await User.findOne({ email });
         if (!user) {
             return res.status(400).json({ msg: 'Invalid credentials' });
         }
 
-        // Log the user details to debug
-        console.log("User found:", user);
-
-        // Compare passwords
         const isMatch = await bcrypt.compare(password, user.password);
-
-        // Log password match result
-        console.log("Password match:", isMatch);
-
         if (!isMatch) {
             return res.status(400).json({ msg: 'Invalid credentials' });
         }
 
-        // Create and sign JWT
-        const payload = {
-            user: {
-                id: user.id
-            }
-        };
-
+        const payload = { user: { id: user.id } };
         jwt.sign(
             payload,
-            process.env.JWT_SECRET, // Use the environment variable for the secret
+            process.env.JWT_SECRET,
             { expiresIn: '1h' },
             (err, token) => {
                 if (err) throw err;
