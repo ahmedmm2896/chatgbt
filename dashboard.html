@@ -5,30 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - PharmAI</title>
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script src="firebaseConfig.js"></script>
 </head>
 <body>
+    <div id="sidebar" class="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">×</button>
+        <a href="index.html">Home</a>
+        <a href="#about-us">About Us</a>
+        <a href="#services">Services</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact-us">Contact Us</a>
+    </div>
+
+    <button class="open-btn" onclick="toggleSidebar()">☰</button>
+
     <section class="dashboard-section">
         <h2>Welcome to your Dashboard</h2>
         <p>You are successfully logged in!</p>
-        <button id="logoutButton">Logout</button>
+        <button id="logoutBtn">Logout</button>
     </section>
 
-    <script type="module">
-        import { auth, onAuthStateChanged, signOut } from './firebaseConfig.js';
-
-        // Protect the dashboard page
-        onAuthStateChanged(auth, (user) => {
+    <script>
+        firebase.auth().onAuthStateChanged(user => {
             if (!user) {
-                // If user is not logged in, redirect to login
-                window.location.href = 'login.html';
+                window.location.href = 'login.html'; // Redirect to login if not logged in
             }
         });
 
-        // Logout functionality
-        document.getElementById('logoutButton').addEventListener('click', async () => {
-            await signOut(auth);
-            window.location.href = 'login.html';
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            firebase.auth().signOut().then(() => {
+                window.location.href = 'login.html'; // Redirect to login after logout
+            });
         });
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+        }
     </script>
 </body>
 </html>
