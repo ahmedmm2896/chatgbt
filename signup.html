@@ -9,8 +9,21 @@
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js"></script>
-    <script src="firebaseConfig.js" type="module"></script> <!-- Load firebase config -->
-    <script src="auth.js" type="module"></script> <!-- Handle authentication -->
+
+    <!-- Firebase Config -->
+    <script>
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
 </head>
 <body>
     <div id="sidebar" class="sidebar">
@@ -27,7 +40,7 @@
 
     <section class="auth-section">
         <h2>Create an Account</h2>
-        <form id="signupForm" onsubmit="return false;"> <!-- Prevent default form submission -->
+        <form id="signupForm" onsubmit="return false;">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
 
@@ -40,7 +53,7 @@
 
     <script>
         document.getElementById('signupForm').addEventListener('submit', async function (e) {
-            e.preventDefault(); // Prevent form from refreshing the page
+            e.preventDefault();
 
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
