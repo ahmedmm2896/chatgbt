@@ -26,14 +26,11 @@
         <p>You are successfully logged in!</p>
     </section>
 
+    <script src="auth.js"></script>
     <script>
         function toggleSidebar() {
             const sidebar = document.getElementById("sidebar");
-            if (sidebar.style.width === "250px") {
-                sidebar.style.width = "0";
-            } else {
-                sidebar.style.width = "250px";
-            }
+            sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
         }
     </script>
 </body>
