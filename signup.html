@@ -27,7 +27,7 @@
 
     <section class="auth-section">
         <h2>Create an Account</h2>
-        <form id="signupForm">
+        <form id="signupForm" onsubmit="return false;"> <!-- Prevent default form submission -->
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
 
@@ -39,6 +39,23 @@
     </section>
 
     <script>
+        document.getElementById('signupForm').addEventListener('submit', async function (e) {
+            e.preventDefault(); // Prevent form from refreshing the page
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
+                // Successful sign up
+                alert('User signed up successfully');
+                window.location.href = 'login.html'; // Redirect to login page
+            } catch (error) {
+                console.error("Error during sign-up:", error.message);
+                alert("Sign-up failed: " + error.message);
+            }
+        });
+
         function toggleSidebar() {
             const sidebar = document.getElementById("sidebar");
             sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
