@@ -7,9 +7,39 @@
     <link rel="stylesheet" href="styles.css">
 
     <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js"></script>
-    <script src="firebaseConfig.js" type="module"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "your_actual_api_key_here",
+            authDomain: "your_actual_auth_domain_here",
+            projectId: "your_actual_project_id_here",
+            storageBucket: "your_actual_storage_bucket_here",
+            messagingSenderId: "your_actual_messaging_sender_id_here",
+            appId: "your_actual_app_id_here"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Check if the user is authenticated
+        firebase.auth().onAuthStateChanged(user => {
+            if (!user) {
+                // If the user is not authenticated, redirect to login page
+                window.location.href = 'login.html';
+            }
+        });
+
+        // Handle logout
+        function logout() {
+            firebase.auth().signOut().then(() => {
+                window.location.href = 'login.html'; // Redirect to login after logout
+            }).catch(error => {
+                console.error("Error during logout:", error);
+            });
+        }
+    </script>
 </head>
 <body>
     <div id="sidebar" class="sidebar">
@@ -27,22 +57,10 @@
     <section class="dashboard-section">
         <h2>Welcome to your Dashboard</h2>
         <p>You are successfully logged in!</p>
-        <button id="logoutBtn">Logout</button>
+        <button id="logoutBtn" onclick="logout()">Logout</button>
     </section>
 
     <script>
-        firebase.auth().onAuthStateChanged(user => {
-            if (!user) {
-                window.location.href = 'login.html'; // Redirect to login if not logged in
-            }
-        });
-
-        document.getElementById('logoutBtn').addEventListener('click', () => {
-            firebase.auth().signOut().then(() => {
-                window.location.href = 'login.html'; // Redirect to login after logout
-            });
-        });
-
         function toggleSidebar() {
             const sidebar = document.getElementById("sidebar");
             sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
