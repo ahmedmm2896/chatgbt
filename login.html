@@ -23,7 +23,7 @@
 
     <section class="auth-section">
         <h2>Login to PharmAI</h2>
-        <form action="#" method="POST">
+        <form id="loginForm">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
             
@@ -35,6 +35,27 @@
     </section>
 
     <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const response = await fetch('http://localhost:5000/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                window.location.href = 'dashboard.html'; // Redirect to dashboard after successful login
+            } else {
+                alert(data.message || 'Login failed');
+            }
+        });
+
         function toggleSidebar() {
             const sidebar = document.getElementById("sidebar");
             if (sidebar.style.width === "250px") {
@@ -46,3 +67,4 @@
     </script>
 </body>
 </html>
+

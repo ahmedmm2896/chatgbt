@@ -23,7 +23,7 @@
 
     <section class="auth-section">
         <h2>Create an Account</h2>
-        <form action="#" method="POST">
+        <form id="signupForm">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -38,6 +38,28 @@
     </section>
 
     <script>
+        document.getElementById('signupForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const response = await fetch('http://localhost:5000/api/auth/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, password })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                window.location.href = 'login.html'; // Redirect to login after successful signup
+            } else {
+                alert(data.message || 'Signup failed');
+            }
+        });
+
         function toggleSidebar() {
             const sidebar = document.getElementById("sidebar");
             if (sidebar.style.width === "250px") {
