@@ -10,7 +10,7 @@
     <!-- Sidebar Section -->
     <div id="sidebar" class="sidebar">
         <button class="close-btn" onclick="toggleSidebar()">×</button>
-        <a href="index.html">Home</a>
+        <a href="index.html">Home</a> <!-- Home Section -->
         <a href="#about-us">About Us</a>
         <a href="#services">Services</a>
         <a href="#testimonials">Testimonials</a>
@@ -38,38 +38,35 @@
     </section>
 
     <script>
-        document.getElementById('signupForm').addEventListener('submit', async (event) => {
-            event.preventDefault(); // Prevent default form submission
-
+        document.getElementById('signupForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
-            try {
-                const response = await fetch('http://localhost:5000/api/auth/signup', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ name, email, password })
-                });
+            const response = await fetch('http://localhost:5000/api/auth/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, password })
+            });
 
-                if (response.ok) {
-                    const data = await response.json();
-                    alert('Sign up successful! You can now log in.');
-                    // Redirect to login or show a success message
-                } else {
-                    const errorData = await response.json();
-                    alert(`Error: ${errorData.msg}`);
-                }
-            } catch (error) {
-                console.error('Error signing up:', error);
+            const data = await response.json();
+
+            if (response.ok) {
+                window.location.href = 'login.html'; // Redirect to login after successful signup
+            } else {
+                alert(data.message || 'Signup failed');
             }
         });
 
         function toggleSidebar() {
             const sidebar = document.getElementById("sidebar");
-            sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+            if (sidebar.style.width === "250px") {
+                sidebar.style.width = "0";
+            } else {
+                sidebar.style.width = "250px";
+            }
         }
     </script>
 </body>
