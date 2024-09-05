@@ -1,8 +1,9 @@
-const connectDB = require('./config/db');  // Make sure this line only appears once
+const connectDB = require('./config/db');
 const express = require('express');
 const authRoutes = require('./routes/auth');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+require('dotenv').config(); // Use .env for secrets
 
 // Initialize the app
 const app = express();
