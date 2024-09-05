@@ -1,11 +1,11 @@
 // Ensure Firebase is properly initialized
 const firebaseConfig = {
-    apiKey: "your_actual_api_key_here",
-    authDomain: "your_actual_auth_domain_here",
-    projectId: "your_actual_project_id_here",
-    storageBucket: "your_actual_storage_bucket_here",
-    messagingSenderId: "your_actual_messaging_sender_id_here",
-    appId: "your_actual_app_id_here"
+    apiKey: AIzaSyCN0cGJ7Brza_GUJiFIzFURaeis5Ykyr2c,
+    authDomain: pharmai-d81af.firebaseapp.com,
+    projectId: pharmai-d81af,
+    storageBucket: pharmai-d81af.appspot.com,
+    messagingSenderId: 332997353967,
+    appId: 1:332997353967:web:6e9d25d1387a470584961a
 };
 
 firebase.initializeApp(firebaseConfig);
