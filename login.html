@@ -1,41 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - PharmAI</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <section class="auth-section">
-        <h2>Login to PharmAI</h2>
-        <form id="loginForm">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            
-            <button type="submit">Login</button>
-        </form>
-    </section>
+<!-- Firebase App (the core Firebase SDK) -->
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
 
-    <script type="module">
-        import { auth, signInWithEmailAndPassword } from './firebaseConfig.js';
+<!-- Firebase Authentication SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
 
-        document.getElementById('loginForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+<script>
+  // Firebase configuration
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
 
-            try {
-                const userCredential = await signInWithEmailAndPassword(auth, email, password);
-                // Redirect to dashboard after successful login
-                window.location.href = 'dashboard.html';
-            } catch (error) {
-                alert('Login failed: ' + error.message);
-            }
-        });
-    </script>
-</body>
-</html>
+  // Initialize Firebase
+  const app = firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+</script>
+
+<section class="auth-section">
+    <h2>Login to PharmAI</h2>
+    <form id="loginForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        
+        <button type="submit">Login</button>
+    </form>
+</section>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        try {
+            // Firebase login with email and password
+            await firebase.auth().signInWithEmailAndPassword(email, password);
+            alert('Login successful!');
+            window.location.href = 'dashboard.html'; // Redirect to dashboard after login
+        } catch (error) {
+            console.error("Error during login:", error.message);
+            alert(error.message);
+        }
+    });
+</script>
