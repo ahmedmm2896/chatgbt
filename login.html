@@ -10,7 +10,7 @@
     <!-- Sidebar Section -->
     <div id="sidebar" class="sidebar">
         <button class="close-btn" onclick="toggleSidebar()">×</button>
-        <a href="index.html">Home</a> <!-- Home Section -->
+        <a href="index.html">Home</a>
         <a href="#about-us">About Us</a>
         <a href="#services">Services</a>
         <a href="#testimonials">Testimonials</a>
@@ -23,8 +23,7 @@
 
     <section class="auth-section">
         <h2>Login to PharmAI</h2>
-        <!-- Update the form action to your backend login route -->
-        <form action="/api/auth/login" method="POST">
+        <form id="loginForm">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
             
@@ -36,15 +35,38 @@
     </section>
 
     <script>
+        document.getElementById('loginForm').addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent the form from submitting the default way
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('http://localhost:5000/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    alert('Login successful!');
+                    // Redirect or handle login success here
+                } else {
+                    const errorData = await response.json();
+                    alert(`Error: ${errorData.msg}`);
+                }
+            } catch (error) {
+                console.error('Error logging in:', error);
+            }
+        });
+
         function toggleSidebar() {
             const sidebar = document.getElementById("sidebar");
-            if (sidebar.style.width === "250px") {
-                sidebar.style.width = "0";
-            } else {
-                sidebar.style.width = "250px";
-            }
+            sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
         }
     </script>
 </body>
 </html>
-
