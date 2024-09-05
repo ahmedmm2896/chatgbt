@@ -1,79 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - PharmAI</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!-- Sidebar Section -->
-    <div id="sidebar" class="sidebar">
-        <button class="close-btn" onclick="toggleSidebar()">×</button>
-        <a href="index.html">Home</a> <!-- Home Section -->
-        <a href="#about-us">About Us</a>
-        <a href="#services">Services</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact-us">Contact Us</a>
-    </div>
+<!-- Firebase App (the core Firebase SDK) -->
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
 
-    <!-- Open Button for Sidebar -->
-    <button class="open-btn" onclick="toggleSidebar()">☰</button>
+<!-- Firebase Authentication SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
 
-    <section class="auth-section">
-        <h2>Create an Account</h2>
-        <form id="signupForm">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+<script>
+  // Firebase configuration
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            
-            <button type="submit">Sign Up</button>
-        </form>
-    </section>
+  // Initialize Firebase
+  const app = firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+</script>
 
-    <script>
-        document.getElementById('signupForm').addEventListener('submit', async function(e) {
-            e.preventDefault();  // Prevents the default form submission (which reloads the page)
+<section class="auth-section">
+    <h2>Create an Account</h2>
+    <form id="signupForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
 
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        
+        <button type="submit">Sign Up</button>
+    </form>
+</section>
 
-            try {
-                // Make sure you're using the correct URL and Firebase API key
-                const response = await fetch('http://localhost:5000/api/auth/signup', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, email, password })
-                });
+<script>
+    document.getElementById('signupForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
 
-                const data = await response.json();
-
-                if (response.ok) {
-                    window.location.href = 'login.html'; // Redirect to login page after successful signup
-                } else {
-                    alert(data.message || 'Signup failed');
-                }
-            } catch (error) {
-                console.error("Error during sign-up:", error);
-                alert('There was an error with your sign-up. Please try again.');
-            }
-        });
-
-        function toggleSidebar() {
-            const sidebar = document.getElementById("sidebar");
-            if (sidebar.style.width === "250px") {
-                sidebar.style.width = "0";
-            } else {
-                sidebar.style.width = "250px";
-            }
+        try {
+            // Firebase sign-up with email and password
+            await firebase.auth().createUserWithEmailAndPassword(email, password);
+            alert('Sign-up successful!');
+            window.location.href = 'login.html'; // Redirect to login page after sign-up
+        } catch (error) {
+            console.error("Error during sign-up:", error.message);
+            alert(error.message);
         }
-    </script>
-</body>
-</html>
+    });
+</script>
