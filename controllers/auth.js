@@ -34,10 +34,15 @@ exports.signup = async (req, res) => {
             }
         };
 
-        jwt.sign(payload, Xf2F$@9G!sH1R4%6H2#PzY1xT8uNvL9, { expiresIn: '1h' }, (err, token) => {
-            if (err) throw err;
-            res.status(200).json({ token });
-        });
+        jwt.sign(
+            payload,
+            process.env.JWT_SECRET, // Use the environment variable for the secret
+            { expiresIn: '1h' },
+            (err, token) => {
+                if (err) throw err;
+                res.status(200).json({ token });
+            }
+        );
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server error');
@@ -55,8 +60,15 @@ exports.login = async (req, res) => {
             return res.status(400).json({ msg: 'Invalid credentials' });
         }
 
+        // Log the user details to debug
+        console.log("User found:", user);
+
         // Compare passwords
         const isMatch = await bcrypt.compare(password, user.password);
+
+        // Log password match result
+        console.log("Password match:", isMatch);
+
         if (!isMatch) {
             return res.status(400).json({ msg: 'Invalid credentials' });
         }
@@ -68,10 +80,15 @@ exports.login = async (req, res) => {
             }
         };
 
-        jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' }, (err, token) => {
-            if (err) throw err;
-            res.status(200).json({ token });
-        });
+        jwt.sign(
+            payload,
+            process.env.JWT_SECRET, // Use the environment variable for the secret
+            { expiresIn: '1h' },
+            (err, token) => {
+                if (err) throw err;
+                res.status(200).json({ token });
+            }
+        );
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server error');
