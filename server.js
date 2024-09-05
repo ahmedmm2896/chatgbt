@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 require('dotenv').config(); // Use .env for secrets
 
+const jwtSecret = process.env.JWT_SECRET;
+
 // Initialize the app
 const app = express();
 
