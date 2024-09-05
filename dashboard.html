@@ -7,31 +7,28 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Sidebar Section -->
-    <div id="sidebar" class="sidebar">
-        <button class="close-btn" onclick="toggleSidebar()">×</button>
-        <a href="index.html">Home</a>
-        <a href="#about-us">About Us</a>
-        <a href="#services">Services</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact-us">Contact Us</a>
-    </div>
-
-    <!-- Open Button for Sidebar -->
-    <button class="open-btn" onclick="toggleSidebar()">☰</button>
-
     <section class="dashboard-section">
         <h2>Welcome to your Dashboard</h2>
         <p>You are successfully logged in!</p>
+        <button id="logoutButton">Logout</button>
     </section>
 
-    <script src="auth.js"></script>
-    <script>
-        function toggleSidebar() {
-            const sidebar = document.getElementById("sidebar");
-            sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
-        }
+    <script type="module">
+        import { auth, onAuthStateChanged, signOut } from './firebaseConfig.js';
+
+        // Protect the dashboard page
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                // If user is not logged in, redirect to login
+                window.location.href = 'login.html';
+            }
+        });
+
+        // Logout functionality
+        document.getElementById('logoutButton').addEventListener('click', async () => {
+            await signOut(auth);
+            window.location.href = 'login.html';
+        });
     </script>
 </body>
 </html>
