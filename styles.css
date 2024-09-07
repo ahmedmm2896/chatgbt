@@ -435,6 +435,265 @@ footer {
     color: #ccc;
 }
 
+/* General Styling */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #0a0f27;
+    color: white;
+    overflow-x: hidden;
+}
+
+header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #0a0f27;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+}
+
+/* Sidebar Icon Styling */
+.open-btn {
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #091223;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #0ef;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #ff69b4;
+    color: white;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Floating Sections */
+.floating-sections {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.floating-section {
+    background-color: #0ef;
+    color: #0a0f27;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floating-section:hover {
+    background-color: #ff69b4;
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    flex-direction: column;
+}
+
+.content {
+    position: relative;
+}
+
+.website-name {
+    font-size: 12px;
+    color: #0ef;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.slogan {
+    font-size: 48px;
+    color: #0ef;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 20px 0;
+    text-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
+}
+
+.try-now {
+    font-size: 24px;
+    padding: 15px 30px;
+    background-color: #0ef;
+    border: none;
+    border-radius: 30px;
+    color: #0a0f27;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.try-now:hover {
+    background-color: #ff69b4;
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+}
+
+/* About Us Section */
+.about-us {
+    padding: 50px 20px;
+    background-color: #0a0f27;
+    text-align: center;
+}
+
+.about-us h2 {
+    font-size: 36px;
+    color: #0ef;
+    text-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
+    margin-bottom: 20px;
+}
+
+.about-us p {
+    font-size: 22px;
+    line-height: 1.8;
+    color: #0ef;
+    text-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Services Section */
+.services {
+    padding: 50px 20px;
+    background-color: #0a0f27;
+    text-align: center;
+}
+
+.services h2 {
+    font-size: 36px;
+    color: #0ef;
+    text-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
+    margin-bottom: 20px;
+}
+
+.services p {
+    font-size: 22px;
+    line-height: 1.8;
+    color: #0ef;
+    text-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.services img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin: 20px auto;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Dashboard Section Styling */
+.dashboard-section {
+    text-align: center;
+    margin-top: 100px;
+    color: #0ef;
+    padding: 20px;
+}
+
+h2.dashboard-title {
+    font-size: 36px;
+    color: #0ef;
+    text-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
+    margin-bottom: 20px;
+}
+
+p.dashboard-subtitle {
+    font-size: 22px;
+    color: #d1d1d1;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    margin-bottom: 20px;
+}
+
+/* Neon Button Styling */
+.neon-button {
+    background-color: #0ef;
+    border: none;
+    padding: 10px 20px;
+    color: #0a0f27;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 30px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(14, 239, 255, 0.7);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.neon-button:hover {
+    background-color: #ff69b4;
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
+}
+
+/* Footer */
+footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #091223;
+    color: #ccc;
+}
+
+
 /* Responsive Design for Smaller Screens */
 @media (max-width: 768px) {
     .logo {
