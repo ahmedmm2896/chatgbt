@@ -1,36 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - PharmAI</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - PharmAI</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Firebase SDK -->
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
+    <script src="auth.js"></script> <!-- Ensure auth.js is correctly linked -->
 </head>
 <body>
-  <div id="sidebar" class="sidebar">
-    <button class="close-btn" onclick="toggleSidebar()">×</button>
-    <a href="index.html">Home</a>
-    <a href="#about-us">About Us</a>
-    <a href="#services">Services</a>
-    <a href="#testimonials">Testimonials</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact-us">Contact Us</a>
-  </div>
+    <div id="sidebar" class="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">×</button>
+        <a href="index.html">Home</a>
+        <a href="#about-us">About Us</a>
+        <a href="#services">Services</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact-us">Contact Us</a>
+    </div>
 
-  <button class="open-btn" onclick="toggleSidebar()">☰</button>
+    <button class="open-btn" onclick="toggleSidebar()">☰</button>
 
-  <section class="dashboard-section">
-    <h2>Welcome to your Dashboard</h2>
-    <button id="logoutBtn" onclick="logout()">Logout</button>
-  </section>
+    <section class="dashboard-section">
+        <h2>Welcome to your Dashboard</h2>
+        <p id="authMessage">Loading authentication status...</p>
+        <button id="logoutBtn" style="display:none;">Logout</button>
+    </section>
 
-  <script src="https://cdn.auth0.com/js/auth0-spa-js/1.19/auth0-spa-js.production.js"></script>
-  <script src="auth.js"></script>
-  <script>
-    function toggleSidebar() {
-      const sidebar = document.getElementById("sidebar");
-      sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
-    }
-  </script>
+    <script>
+        const updateUI = async () => {
+            try {
+                const isAuthenticated = await auth0.isAuthenticated();
+
+                if (isAuthenticated) {
+                    document.getElementById("authMessage").innerText = "You are successfully logged in!";
+                    document.getElementById("logoutBtn").style.display = "block";
+                } else {
+                    window.location.href = 'login.html'; // Redirect to login if not authenticated
+                }
+            } catch (err) {
+                console.error("Error checking authentication:", err);
+                document.getElementById("authMessage").innerText = "Error checking authentication.";
+            }
+        };
+
+        document.getElementById("logoutBtn").addEventListener("click", () => {
+            auth0.logout({
+                returnTo: window.location.origin
+            });
+        });
+
+        // Make sure Auth0 is configured before updating the UI
+        window.onload = async () => {
+            await configureClient();
+            updateUI();
+        };
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+        }
+    </script>
 </body>
 </html>
