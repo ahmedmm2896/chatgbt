@@ -7,38 +7,28 @@
     <link rel="stylesheet" href="styles.css">
 
     <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js"></script>
+
+    <!-- Firebase Initialization -->
     <script>
-        // Firebase configuration
         const firebaseConfig = {
-            apiKey: AIzaSyCN0cGJ7Brza_GUJiFIzFURaeis5Ykyr2c,
-            authDomain: pharmai-d81af.firebaseapp.com,
-            projectId: pharmai-d81af,
-            storageBucket: pharmai-d81af.appspot.com,
-            messagingSenderId: 332997353967,
-            appId: 1:332997353967:web:6e9d25d1387a470584961a
+            apiKey: "your_api_key",
+            authDomain: "your_auth_domain",
+            projectId: "your_project_id",
+            storageBucket: "your_storage_bucket",
+            messagingSenderId: "your_messaging_sender_id",
+            appId: "your_app_id"
         };
 
-        // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
 
-        // Check if the user is authenticated
+        // Check if user is logged in
         firebase.auth().onAuthStateChanged(user => {
             if (!user) {
-                // If the user is not authenticated, redirect to login page
-                window.location.href = 'login.html';
+                window.location.href = 'login.html'; // Redirect to login if not logged in
             }
         });
-
-        // Handle logout
-        function logout() {
-            firebase.auth().signOut().then(() => {
-                window.location.href = 'login.html'; // Redirect to login after logout
-            }).catch(error => {
-                console.error("Error during logout:", error);
-            });
-        }
     </script>
 </head>
 <body>
@@ -57,10 +47,17 @@
     <section class="dashboard-section">
         <h2>Welcome to your Dashboard</h2>
         <p>You are successfully logged in!</p>
-        <button id="logoutBtn" onclick="logout()">Logout</button>
+        <button id="logoutBtn">Logout</button>
     </section>
 
     <script>
+        // Logout Functionality
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            firebase.auth().signOut().then(() => {
+                window.location.href = 'login.html'; // Redirect to login after logout
+            });
+        });
+
         function toggleSidebar() {
             const sidebar = document.getElementById("sidebar");
             sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
