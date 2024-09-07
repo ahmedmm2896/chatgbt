@@ -8,13 +8,13 @@
 
     <!-- Auth0 SPA SDK -->
     <script src="https://cdn.auth0.com/js/auth0-spa-js/1.19.4/auth0-spa-js.production.js"></script>
-    <script src="auth.js"></script> <!-- Make sure this points to your auth.js file -->
+    <script src="auth.js"></script> <!-- Auth0 config script -->
 </head>
 <body>
     <!-- Sidebar Section -->
     <div id="sidebar" class="sidebar">
         <button class="close-btn" onclick="toggleSidebar()">×</button>
-        <a href="index.html">Home</a> 
+        <a href="index.html">Home</a>
         <a href="#about-us">About Us</a>
         <a href="#services">Services</a>
         <a href="#testimonials">Testimonials</a>
@@ -25,17 +25,22 @@
     <!-- Open Button for Sidebar -->
     <button class="open-btn" onclick="toggleSidebar()">☰</button>
 
+    <!-- Dashboard Section -->
     <section class="dashboard-section">
         <h2>Welcome to your Dashboard</h2>
         <p>You are successfully logged in!</p>
-        <button id="logoutBtn" onclick="logout()">Logout</button> <!-- Logout button -->
+        <button id="logoutBtn" class="styled-button" onclick="logout()">Logout</button> <!-- Added styled button class -->
     </section>
 
+    <!-- Sidebar Toggle Script -->
     <script>
-        // Function to toggle the sidebar
         function toggleSidebar() {
             const sidebar = document.getElementById("sidebar");
-            sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+            if (sidebar.style.width === "250px") {
+                sidebar.style.width = "0"; // Close sidebar
+            } else {
+                sidebar.style.width = "250px"; // Open sidebar
+            }
         }
 
         // Ensure Auth0 configuration on page load
@@ -43,7 +48,7 @@
             await configureClient();
 
             const isAuthenticated = await auth0.isAuthenticated();
-            
+
             // Redirect to login if not authenticated
             if (!isAuthenticated) {
                 window.location.href = 'login.html';
@@ -59,4 +64,3 @@
     </script>
 </body>
 </html>
-
