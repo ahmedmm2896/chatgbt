@@ -27,8 +27,10 @@
 
     <section class="auth-section">
         <h2>Login to PharmAI</h2>
-        <button id="loginBtn" onclick="login()">Sign In</button>
-        <button id="dashboardBtn" style="display: none;" onclick="window.location.href='dashboard.html'">Go to Dashboard</button>
+        <div class="auth-container">
+            <button id="loginBtn" class="auth-btn" onclick="login()">Log In</button>
+            <button id="dashboardBtn" class="auth-btn" style="display: none;" onclick="window.location.href='dashboard.html'">Go to Dashboard</button>
+        </div>
     </section>
 
     <script>
