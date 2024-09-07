@@ -666,7 +666,7 @@ p.dashboard-subtitle {
 }
 
 /* Neon Button Styling */
-.neon-button {
+.styled-button {
     background-color: #0ef;
     border: none;
     padding: 10px 20px;
@@ -679,7 +679,7 @@ p.dashboard-subtitle {
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.neon-button:hover {
+.styled-button:hover {
     background-color: #ff69b4;
     color: white;
     box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
