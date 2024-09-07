@@ -4,20 +4,19 @@ const configureClient = async () => {
   try {
     const response = await fetch("/auth_config.json");
     
-    // Check if response is OK
+    // Check if the response is OK
     if (!response.ok) {
       throw new Error(`Could not fetch auth_config.json: ${response.statusText}`);
     }
     
     const config = await response.json();
 
- const auth0 = await createAuth0Client({
-  domain: "pharmai.us.auth0.com",
-  client_id: "tQtgm50zwKorzoDwVbqOzXq50V5DBMfx",
-  redirect_uri: window.location.origin + "/dashboard.html",  // This should match your Auth0 settings
-});
-  // You can change this to your desired redirect URL
+    auth0 = await createAuth0Client({
+      domain: "pharmai.us.auth0.com",
+      client_id: "tQtgm50zwKorzoDwVbqOzXq50V5DBMfx",
+      redirect_uri: window.location.origin + "/dashboard.html",  // This should match your Auth0 settings
     });
+    
   } catch (err) {
     console.error("Error configuring Auth0 client:", err.message);
   }
@@ -32,7 +31,7 @@ window.onload = async () => {
   }
 
   // If returning from Auth0, handle the redirection.
-  if (window.location.search.includes("code=") && auth0) {
+  if (window.location.search.includes("code=")) {
     try {
       await auth0.handleRedirectCallback();
       window.history.replaceState({}, document.title, "/");
