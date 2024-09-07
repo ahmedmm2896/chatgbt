@@ -1,37 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - PharmAI</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - PharmAI</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.auth0.com/js/auth0/9.18/auth0.min.js"></script> <!-- Auth0 SDK -->
+    <script src="auth.js"></script> <!-- Your JS for Auth0 setup -->
 </head>
 <body>
-  <div id="sidebar" class="sidebar">
-    <button class="close-btn" onclick="toggleSidebar()">×</button>
-    <a href="index.html">Home</a>
-    <a href="#about-us">About Us</a>
-    <a href="#services">Services</a>
-    <a href="#testimonials">Testimonials</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact-us">Contact Us</a>
-  </div>
+    <div id="sidebar" class="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">×</button>
+        <a href="index.html">Home</a>
+        <a href="#about-us">About Us</a>
+        <a href="#services">Services</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact-us">Contact Us</a>
+    </div>
 
-  <button class="open-btn" onclick="toggleSidebar()">☰</button>
+    <button class="open-btn" onclick="toggleSidebar()">☰</button>
 
-  <section class="auth-section">
-    <h2>Login to PharmAI</h2>
-    <button id="loginBtn" onclick="login()">Sign in with Auth0</button>
-    <button id="dashboardBtn" style="display:none;" onclick="window.location.href='dashboard.html'">Go to Dashboard</button>
-  </section>
+    <section class="auth-section">
+        <h2>Login to PharmAI</h2>
+        <button id="login" onclick="login()">Sign In with Auth0</button> <!-- Auth0 Login Button -->
+    </section>
 
-  <script src="https://cdn.auth0.com/js/auth0-spa-js/1.19/auth0-spa-js.production.js"></script>
-  <script src="auth.js"></script>
-  <script>
-    function toggleSidebar() {
-      const sidebar = document.getElementById("sidebar");
-      sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
-    }
-  </script>
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+        }
+    </script>
 </body>
 </html>
