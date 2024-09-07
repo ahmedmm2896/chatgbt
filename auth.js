@@ -7,7 +7,7 @@ const configureClient = async () => {
   auth0 = await createAuth0Client({
     domain: "pharmai.us.auth0.com", // Ensure the domain is a string
     client_id: "tQtgm50zwKorzoDwVbqOzXq50V5DBMfx", // Ensure the client ID is a string
-    redirect_uri: window.location.origin,
+    redirect_uri: "https://pharmai3.vercel.app/dashboard.html",
   });
 };
 
