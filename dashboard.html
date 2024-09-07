@@ -1,67 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - PharmAI</title>
-    <link rel="stylesheet" href="styles.css">
-
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js"></script>
-
-    <!-- Firebase Initialization -->
-    <script>
-        const firebaseConfig = {
-            apiKey: AIzaSyCN0cGJ7Brza_GUJiFIzFURaeis5Ykyr2c,
-            authDomain: pharmai-d81af.firebaseapp.com,
-            projectId: pharmai-d81af,
-            storageBucket: pharmai-d81af.appspot.com,
-            messagingSenderId: 332997353967,
-            appId: 1:332997353967:web:6e9d25d1387a470584961a
-        };
-
-        firebase.initializeApp(firebaseConfig);
-
-        // Check if user is logged in
-        firebase.auth().onAuthStateChanged(user => {
-            if (!user) {
-                window.location.href = 'login.html'; // Redirect to login if not logged in
-            }
-        });
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - PharmAI</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="sidebar" class="sidebar">
-        <button class="close-btn" onclick="toggleSidebar()">×</button>
-        <a href="index.html">Home</a>
-        <a href="#about-us">About Us</a>
-        <a href="#services">Services</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact-us">Contact Us</a>
-    </div>
+  <div id="sidebar" class="sidebar">
+    <button class="close-btn" onclick="toggleSidebar()">×</button>
+    <a href="index.html">Home</a>
+    <a href="#about-us">About Us</a>
+    <a href="#services">Services</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact-us">Contact Us</a>
+  </div>
 
-    <button class="open-btn" onclick="toggleSidebar()">☰</button>
+  <button class="open-btn" onclick="toggleSidebar()">☰</button>
 
-    <section class="dashboard-section">
-        <h2>Welcome to your Dashboard</h2>
-        <p>You are successfully logged in!</p>
-        <button id="logoutBtn">Logout</button>
-    </section>
+  <section class="dashboard-section">
+    <h2>Welcome to your Dashboard</h2>
+    <button id="logoutBtn" onclick="logout()">Logout</button>
+  </section>
 
-    <script>
-        // Logout Functionality
-        document.getElementById('logoutBtn').addEventListener('click', () => {
-            firebase.auth().signOut().then(() => {
-                window.location.href = 'login.html'; // Redirect to login after logout
-            });
-        });
-
-        function toggleSidebar() {
-            const sidebar = document.getElementById("sidebar");
-            sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
-        }
-    </script>
+  <script src="https://cdn.auth0.com/js/auth0-spa-js/1.19/auth0-spa-js.production.js"></script>
+  <script src="auth.js"></script>
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+    }
+  </script>
 </body>
 </html>
