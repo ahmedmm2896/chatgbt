@@ -34,6 +34,7 @@
 
     <!-- Sidebar Toggle Script -->
     <script>
+        // Sidebar toggle function
         function toggleSidebar() {
             const sidebar = document.getElementById("sidebar");
             if (sidebar.style.width === "250px") {
@@ -43,11 +44,16 @@
             }
         }
 
+        // Global auth0 client variable
+        let auth0Client;
+
         // Ensure Auth0 configuration on page load
         window.onload = async () => {
-            await configureClient();
+            // Configure Auth0 Client
+            auth0Client = await configureClient();
 
-            const isAuthenticated = await auth0.isAuthenticated();
+            // Ensure that auth0 is ready before proceeding
+            const isAuthenticated = await auth0Client.isAuthenticated();
 
             // Redirect to login if not authenticated
             if (!isAuthenticated) {
@@ -57,9 +63,14 @@
 
         // Logout function
         const logout = async () => {
-            await auth0.logout({
-                returnTo: window.location.origin,  // Redirect back to home or login page
-            });
+            // Ensure auth0 is initialized
+            if (auth0Client) {
+                await auth0Client.logout({
+                    returnTo: window.location.origin,  // Redirect back to home or login page
+                });
+            } else {
+                console.error("Auth0 client is not initialized.");
+            }
         };
     </script>
 </body>
