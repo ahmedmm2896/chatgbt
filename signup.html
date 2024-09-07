@@ -7,18 +7,19 @@
     <link rel="stylesheet" href="styles.css">
 
     <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js"></script>
 
-    <!-- Firebase Config -->
+    <!-- Firebase Initialization -->
     <script>
+        // Replace with your Firebase configuration
         const firebaseConfig = {
-            apiKey: AIzaSyCN0cGJ7Brza_GUJiFIzFURaeis5Ykyr2c,
-            authDomain: pharmai-d81af.firebaseapp.com,
-            projectId: pharmai-d81af,
-            storageBucket: pharmai-d81af.appspot.com,
-            messagingSenderId: 332997353967,
-            appId: 1:332997353967:web:6e9d25d1387a470584961a
+            apiKey: "your_api_key",
+            authDomain: "your_auth_domain",
+            projectId: "your_project_id",
+            storageBucket: "your_storage_bucket",
+            messagingSenderId: "your_messaging_sender_id",
+            appId: "your_app_id"
         };
 
         // Initialize Firebase
@@ -40,7 +41,7 @@
 
     <section class="auth-section">
         <h2>Create an Account</h2>
-        <form id="signupForm" onsubmit="return false;">
+        <form id="signupForm">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
 
@@ -49,24 +50,39 @@
 
             <button type="submit">Sign Up</button>
         </form>
+
+        <!-- Google Sign-In Button -->
+        <button id="googleSignInBtn">Sign in with Google</button>
     </section>
 
     <script>
-        document.getElementById('signupForm').addEventListener('submit', async function (e) {
-            e.preventDefault();
+        // Google Sign-In with Firebase OAuth
+        document.getElementById('googleSignInBtn').addEventListener('click', function () {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithPopup(provider)
+                .then((result) => {
+                    console.log('User signed in:', result.user);
+                    window.location.href = 'dashboard.html'; // Redirect to dashboard
+                })
+                .catch((error) => {
+                    alert("Google Sign-in failed: " + error.message);
+                });
+        });
 
+        // Email and Password Sign-Up
+        document.getElementById('signupForm').addEventListener('submit', function (e) {
+            e.preventDefault();
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
-            try {
-                const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
-                // Successful sign up
-                alert('User signed up successfully');
-                window.location.href = 'login.html'; // Redirect to login page
-            } catch (error) {
-                console.error("Error during sign-up:", error.message);
-                alert("Sign-up failed: " + error.message);
-            }
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    console.log('User signed up:', userCredential.user);
+                    window.location.href = 'login.html'; // Redirect to login
+                })
+                .catch((error) => {
+                    alert("Sign-up failed: " + error.message);
+                });
         });
 
         function toggleSidebar() {
