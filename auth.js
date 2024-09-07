@@ -1,22 +1,25 @@
-let auth0 = null;
+let auth0 = null;  // Auth0 client object
 
 const configureClient = async () => {
   try {
+    // Fetch configuration for Auth0
     const response = await fetch("/auth_config.json");
-
+    
     if (!response.ok) {
-      throw new Error(`Could not fetch auth_config.json: ${response.statusText}`);
+      throw new Error(`Failed to fetch auth_config.json: ${response.statusText}`);
     }
 
     const config = await response.json();
 
+    // Initialize the Auth0 client
     auth0 = await createAuth0Client({
       domain: config.domain,
       client_id: config.clientId,
-      redirect_uri: window.location.origin + "/dashboard.html", 
+      redirect_uri: window.location.origin + "/dashboard.html", // Update this to match your actual URL
     });
+
   } catch (err) {
-    console.error("Error configuring Auth0 client:", err.message);
+    console.error("Error configuring Auth0 client:", err);
   }
 };
 
@@ -28,13 +31,13 @@ window.onload = async () => {
     return;
   }
 
-  // Handle redirection back from Auth0 after login
-  if (window.location.search.includes("code=") && auth0) {
+  // If returning from Auth0 after a redirect
+  if (window.location.search.includes("code=")) {
     try {
       await auth0.handleRedirectCallback();
-      window.history.replaceState({}, document.title, "/dashboard.html"); // Ensure correct state
+      window.history.replaceState({}, document.title, "/dashboard.html");
     } catch (err) {
-      console.error("Error handling Auth0 redirect:", err.message);
+      console.error("Error handling Auth0 redirect:", err);
     }
   }
 
@@ -50,32 +53,26 @@ window.onload = async () => {
   }
 };
 
+// Trigger login
 const login = async () => {
   if (auth0) {
     try {
       await auth0.loginWithRedirect();
     } catch (err) {
-      console.error("Login failed:", err.message);
+      console.error("Login failed:", err);
     }
   } else {
     console.error("Auth0 client is not initialized.");
   }
 };
 
+// Trigger logout
 const logout = () => {
   if (auth0) {
     auth0.logout({
-      returnTo: window.location.origin, 
+      returnTo: window.location.origin,  // Update this if you want a different logout URL
     });
   } else {
     console.error("Auth0 client is not initialized.");
-  }
-};
-
-// Check for authentication status in the dashboard
-const checkAuthStatus = async () => {
-  const isAuthenticated = await auth0.isAuthenticated();
-  if (!isAuthenticated) {
-    window.location.href = "/login.html";  // Redirect to login if not authenticated
   }
 };
