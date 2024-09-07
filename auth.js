@@ -5,7 +5,7 @@ const configureClient = async () => {
   const config = await response.json();
 
   auth0 = await createAuth0Client({
-    domain: config.domain,
+    domain: pharmai.us.auth0.com,
     client_id: config.clientId,
     redirect_uri: window.location.origin,
   });
