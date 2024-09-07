@@ -693,6 +693,48 @@ footer {
     color: #ccc;
 }
 
+/* Add these styles to your existing styles.css */
+
+/* Center the container for buttons */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px; /* Adjust for desired space */
+    gap: 15px; /* Space between buttons if both are visible */
+}
+
+/* Style the Auth0 login button and dashboard button */
+.auth-btn {
+    background-color: #0ef; /* Neon color */
+    color: #0a0f27; /* Dark background color */
+    padding: 12px 20px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(14, 239, 255, 0.5);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    min-width: 200px; /* Optional: Ensure button doesn't shrink too much */
+}
+
+.auth-btn:hover {
+    background-color: #ff69b4;
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+}
+
+/* Ensure the entire section stays centered vertically */
+.auth-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+}
+
+
 
 /* Responsive Design for Smaller Screens */
 @media (max-width: 768px) {
