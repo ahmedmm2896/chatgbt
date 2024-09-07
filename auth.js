@@ -1,12 +1,12 @@
-const auth0 = null;
+let auth0 = null;
 
 const configureClient = async () => {
   const response = await fetch("/auth_config.json");
   const config = await response.json();
 
   auth0 = await createAuth0Client({
-    domain: pharmai.us.auth0.com,
-    client_id: tQtgm50zwKorzoDwVbqOzXq50V5DBMfx,
+    domain: "pharmai.us.auth0.com", // Ensure the domain is a string
+    client_id: "tQtgm50zwKorzoDwVbqOzXq50V5DBMfx", // Ensure the client ID is a string
     redirect_uri: window.location.origin,
   });
 };
@@ -40,3 +40,4 @@ const logout = () => {
     returnTo: window.location.origin,
   });
 };
+
