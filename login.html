@@ -1,92 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - PharmAI</title>
-    <link rel="stylesheet" href="styles.css">
-
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js"></script>
-
-    <!-- Firebase Initialization -->
-    <script>
-        const firebaseConfig = {
-            apiKey: AIzaSyCN0cGJ7Brza_GUJiFIzFURaeis5Ykyr2c,
-            authDomain: pharmai-d81af.firebaseapp.com,
-            projectId: pharmai-d81af,
-            storageBucket: pharmai-d81af.appspot.com,
-            messagingSenderId: 332997353967,
-            appId: 1:332997353967:web:6e9d25d1387a470584961a
-        };
-
-        firebase.initializeApp(firebaseConfig);
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - PharmAI</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="sidebar" class="sidebar">
-        <button class="close-btn" onclick="toggleSidebar()">×</button>
-        <a href="index.html">Home</a>
-        <a href="#about-us">About Us</a>
-        <a href="#services">Services</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact-us">Contact Us</a>
-    </div>
+  <div id="sidebar" class="sidebar">
+    <button class="close-btn" onclick="toggleSidebar()">×</button>
+    <a href="index.html">Home</a>
+    <a href="#about-us">About Us</a>
+    <a href="#services">Services</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact-us">Contact Us</a>
+  </div>
 
-    <button class="open-btn" onclick="toggleSidebar()">☰</button>
+  <button class="open-btn" onclick="toggleSidebar()">☰</button>
 
-    <section class="auth-section">
-        <h2>Login to PharmAI</h2>
-        <form id="loginForm">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+  <section class="auth-section">
+    <h2>Login to PharmAI</h2>
+    <button id="loginBtn" onclick="login()">Sign in with Auth0</button>
+    <button id="dashboardBtn" style="display:none;" onclick="window.location.href='dashboard.html'">Go to Dashboard</button>
+  </section>
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-
-            <button type="submit">Login</button>
-        </form>
-
-        <!-- Google Sign-In Button -->
-        <button id="googleSignInBtn">Sign in with Google</button>
-    </section>
-
-    <script>
-        // Google Sign-In with Firebase OAuth
-        document.getElementById('googleSignInBtn').addEventListener('click', function () {
-            const provider = new firebase.auth.GoogleAuthProvider();
-            firebase.auth().signInWithPopup(provider)
-                .then((result) => {
-                    console.log('User signed in:', result.user);
-                    window.location.href = 'dashboard.html'; // Redirect to dashboard
-                })
-                .catch((error) => {
-                    alert("Google Sign-in failed: " + error.message);
-                });
-        });
-
-        // Email and Password Login
-        document.getElementById('loginForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-
-            firebase.auth().signInWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    console.log('User logged in:', userCredential.user);
-                    window.location.href = 'dashboard.html'; // Redirect to dashboard
-                })
-                .catch((error) => {
-                    alert("Login failed: " + error.message);
-                });
-        });
-
-        function toggleSidebar() {
-            const sidebar = document.getElementById("sidebar");
-            sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
-        }
-    </script>
+  <script src="https://cdn.auth0.com/js/auth0-spa-js/1.19/auth0-spa-js.production.js"></script>
+  <script src="auth.js"></script>
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+    }
+  </script>
 </body>
 </html>
