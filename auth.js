@@ -5,12 +5,10 @@ const configureClient = async () => {
   const config = await response.json();
 
   auth0 = await createAuth0Client({
-  domain: "pharmai.us.auth0.com",
-  client_id: "tQtgm50zwKorzoDwVbqOzXq50V5DBMfx",
-  redirect_uri: "https://pharmai3.vercel.app/dashboard.html", // Redirect to your dashboard
-  response_type: "code", // Authorization Code Flow
-  scope: "openid profile email" // Requesting user's profile and email
-});
+    domain: pharmai.us.auth0.com,
+    client_id: tQtgm50zwKorzoDwVbqOzXq50V5DBMfx,
+    redirect_uri: "https://pharmai3.vercel.app/dashboard.html",
+  });
 };
 
 window.onload = async () => {
@@ -42,4 +40,3 @@ const logout = () => {
     returnTo: window.location.origin,
   });
 };
-
