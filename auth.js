@@ -11,10 +11,12 @@ const configureClient = async () => {
     
     const config = await response.json();
 
-    auth0 = await createAuth0Client({
-      domain: config.domain,
-      client_id: config.client_id,
-      redirect_uri: window.location.origin,  // You can change this to your desired redirect URL
+ const auth0 = await createAuth0Client({
+  domain: "pharmai.us.auth0.com",
+  client_id: "tQtgm50zwKorzoDwVbqOzXq50V5DBMfx",
+  redirect_uri: window.location.origin + "/dashboard.html",  // This should match your Auth0 settings
+});
+  // You can change this to your desired redirect URL
     });
   } catch (err) {
     console.error("Error configuring Auth0 client:", err.message);
