@@ -6,14 +6,15 @@
     <title>Dashboard - PharmAI</title>
     <link rel="stylesheet" href="styles.css">
 
-    <!-- Auth0 SPA JS Library -->
+    <!-- Auth0 SPA SDK -->
     <script src="https://cdn.auth0.com/js/auth0-spa-js/1.19.4/auth0-spa-js.production.js"></script>
-    <script src="auth.js"></script> <!-- Make sure to link to your auth.js file -->
+    <script src="auth.js"></script> <!-- Make sure this points to your auth.js file -->
 </head>
 <body>
+    <!-- Sidebar Section -->
     <div id="sidebar" class="sidebar">
         <button class="close-btn" onclick="toggleSidebar()">×</button>
-        <a href="index.html">Home</a>
+        <a href="index.html">Home</a> 
         <a href="#about-us">About Us</a>
         <a href="#services">Services</a>
         <a href="#testimonials">Testimonials</a>
@@ -21,44 +22,41 @@
         <a href="#contact-us">Contact Us</a>
     </div>
 
+    <!-- Open Button for Sidebar -->
     <button class="open-btn" onclick="toggleSidebar()">☰</button>
 
     <section class="dashboard-section">
-        <h2 class="dashboard-title">Welcome to your Dashboard</h2>
-        <p class="dashboard-subtitle">You are successfully logged in!</p>
-        <p id="user-email"></p>
-        <button class="neon-button" id="logoutBtn">Logout</button>
+        <h2>Welcome to your Dashboard</h2>
+        <p>You are successfully logged in!</p>
+        <button id="logoutBtn" onclick="logout()">Logout</button> <!-- Logout button -->
     </section>
 
     <script>
-        // Function to check if the user is authenticated
-        window.onload = async () => {
-            const isAuthenticated = await auth0.isAuthenticated();
-
-            if (!isAuthenticated) {
-                window.location.href = 'login.html'; // Redirect to login if not authenticated
-                return;
-            }
-
-            // If authenticated, fetch user profile
-            const user = await auth0.getUser();
-            document.getElementById('user-email').textContent = `Logged in as: ${user.email}`;
-
-            // Show the dashboard content now that the user is authenticated
-            document.querySelector('.dashboard-section').style.display = 'block';
-        };
-
-        // Logout function
-        document.getElementById('logoutBtn').addEventListener('click', () => {
-            auth0.logout({
-                returnTo: window.location.origin, // Redirect to the homepage or login page after logging out
-            });
-        });
-
+        // Function to toggle the sidebar
         function toggleSidebar() {
             const sidebar = document.getElementById("sidebar");
             sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
         }
+
+        // Ensure Auth0 configuration on page load
+        window.onload = async () => {
+            await configureClient();
+
+            const isAuthenticated = await auth0.isAuthenticated();
+            
+            // Redirect to login if not authenticated
+            if (!isAuthenticated) {
+                window.location.href = 'login.html';
+            }
+        };
+
+        // Logout function
+        const logout = async () => {
+            await auth0.logout({
+                returnTo: window.location.origin,  // Redirect back to home or login page
+            });
+        };
     </script>
 </body>
 </html>
+
