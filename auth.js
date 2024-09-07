@@ -14,7 +14,7 @@ const configureClient = async () => {
     auth0 = await createAuth0Client({
       domain: "pharmai.us.auth0.com",
       client_id: "tQtgm50zwKorzoDwVbqOzXq50V5DBMfx",
-      redirect_uri: window.location.origin,  // This should match your Auth0 settings
+      redirect_uri: window.location.origin + "/dashboard.html",  // This should match your Auth0 settings
     });
     
   } catch (err) {
