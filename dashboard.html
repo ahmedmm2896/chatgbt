@@ -1,39 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - PharmAI</title>
-  <link rel="stylesheet" href="styles.css">
-  
-  <!-- Include Auth0 SDK -->
-  <script src="https://cdn.auth0.com/js/auth0-spa-js/1.19.4/auth0-spa-js.production.js"></script>
-  <script src="auth.js"></script> <!-- Make sure the auth.js is linked here -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - PharmAI</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Include your site's main stylesheet -->
+
+    <!-- Auth0 script -->
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/1.19.4/auth0-spa-js.production.js"></script>
 </head>
 <body>
-  <div id="sidebar" class="sidebar">
-    <button class="close-btn" onclick="toggleSidebar()">×</button>
-    <a href="index.html">Home</a>
-    <a href="#about-us">About Us</a>
-    <a href="#services">Services</a>
-    <a href="#testimonials">Testimonials</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact-us">Contact Us</a>
-  </div>
+    <!-- Sidebar Section -->
+    <div id="sidebar" class="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">×</button>
+        <a href="index.html">Home</a> 
+        <a href="#about-us">About Us</a>
+        <a href="#services">Services</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact-us">Contact Us</a>
+    </div>
 
-  <button class="open-btn" onclick="toggleSidebar()">☰</button>
+    <!-- Open Button for Sidebar -->
+    <button class="open-btn" onclick="toggleSidebar()">☰</button>
 
-  <section class="dashboard-section">
-    <h2>Welcome to your Dashboard</h2>
-    <p>You are successfully logged in!</p>
-    <button id="logoutBtn" onclick="logout()">Logout</button>
-  </section>
+    <section class="dashboard-section">
+        <h2>Welcome to your Dashboard</h2>
+        <p>You are successfully logged in!</p>
+        <button id="logoutBtn">Logout</button>
+    </section>
 
-  <script>
-    function toggleSidebar() {
-      const sidebar = document.getElementById("sidebar");
-      sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
-    }
-  </script>
+    <script>
+        // Handle Sidebar Toggle
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+        }
+
+        // Initialize Auth0 client
+        let auth0 = null;
+
+        const configureClient = async () => {
+            auth0 = await createAuth0Client({
+                domain: "your-auth0-domain",
+                client_id: "your-auth0-client-id",
+                redirect_uri: window.location.origin + "/dashboard.html",
+            });
+        };
+
+        window.onload = async () => {
+            await configureClient();
+
+            const isAuthenticated = await auth0.isAuthenticated();
+            
+            // If not authenticated, redirect to login
+            if (!isAuthenticated) {
+                window.location.href = 'login.html';
+            } else {
+                document.getElementById("logoutBtn").style.display = "block";
+            }
+        };
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            auth0.logout({
+                returnTo: window.location.origin + "/login.html",
+            });
+        });
+    </script>
 </body>
 </html>
