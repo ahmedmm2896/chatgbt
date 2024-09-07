@@ -1,8 +1,7 @@
-let auth0 = null;  // Auth0 client object
+let auth0 = null;
 
 const configureClient = async () => {
   try {
-    // Fetch configuration for Auth0
     const response = await fetch("/auth_config.json");
     
     if (!response.ok) {
@@ -11,18 +10,19 @@ const configureClient = async () => {
 
     const config = await response.json();
 
-    // Initialize the Auth0 client
+    // Initialize Auth0 client
     auth0 = await createAuth0Client({
       domain: config.domain,
       client_id: config.clientId,
-      redirect_uri: window.location.origin + "/dashboard.html", // Update this to match your actual URL
+      redirect_uri: window.location.origin + "/dashboard.html", // Update to match your redirect path
     });
-
+    
   } catch (err) {
-    console.error("Error configuring Auth0 client:", err);
+    console.error("Error configuring Auth0 client:", err.message);
   }
 };
 
+// Handle page load and authentication
 window.onload = async () => {
   await configureClient();
 
@@ -31,13 +31,13 @@ window.onload = async () => {
     return;
   }
 
-  // If returning from Auth0 after a redirect
+  // Handle redirect callback after Auth0 login
   if (window.location.search.includes("code=")) {
     try {
       await auth0.handleRedirectCallback();
-      window.history.replaceState({}, document.title, "/dashboard.html");
+      window.history.replaceState({}, document.title, "/dashboard.html"); // Ensure this redirects to the dashboard
     } catch (err) {
-      console.error("Error handling Auth0 redirect:", err);
+      console.error("Error handling Auth0 redirect:", err.message);
     }
   }
 
@@ -47,6 +47,7 @@ window.onload = async () => {
   if (isAuthenticated) {
     document.getElementById("loginBtn").style.display = "none";
     document.getElementById("dashboardBtn").style.display = "block";
+    window.location.href = "/dashboard.html"; // Ensure redirection to dashboard
   } else {
     document.getElementById("loginBtn").style.display = "block";
     document.getElementById("dashboardBtn").style.display = "none";
@@ -59,7 +60,7 @@ const login = async () => {
     try {
       await auth0.loginWithRedirect();
     } catch (err) {
-      console.error("Login failed:", err);
+      console.error("Login failed:", err.message);
     }
   } else {
     console.error("Auth0 client is not initialized.");
@@ -70,7 +71,7 @@ const login = async () => {
 const logout = () => {
   if (auth0) {
     auth0.logout({
-      returnTo: window.location.origin,  // Update this if you want a different logout URL
+      returnTo: window.location.origin,
     });
   } else {
     console.error("Auth0 client is not initialized.");
