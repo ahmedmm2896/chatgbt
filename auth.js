@@ -2,28 +2,27 @@ let auth0 = null;
 
 const configureClient = async () => {
   try {
-    // Fetch Auth0 config from auth_config.json
     const response = await fetch("/auth_config.json");
     
     if (!response.ok) {
-      throw new Error(`Failed to fetch auth_config.json: ${response.statusText}`);
+      throw new Error(`Could not fetch auth_config.json: ${response.statusText}`);
     }
     
     const config = await response.json();
-    
-    // Initialize the Auth0 client with the fetched config
+
+    // Initialize Auth0 client with domain and client ID from the JSON config
     auth0 = await createAuth0Client({
       domain: config.domain,
-      client_id: config.clientId, // Use correct client_id from auth_config.json
-      redirect_uri: window.location.origin + "/dashboard.html"
+      client_id: config.clientId,
+      redirect_uri: window.location.origin + "/dashboard.html",  // Use this as your callback URL
     });
-    
+
+    console.log("Auth0 client initialized successfully");
   } catch (err) {
     console.error("Error configuring Auth0 client:", err.message);
   }
 };
 
-// Handle authentication on page load
 window.onload = async () => {
   await configureClient();
 
@@ -32,7 +31,7 @@ window.onload = async () => {
     return;
   }
 
-  // Handle redirect callback from Auth0
+  // Check if the user is returning from the Auth0 login flow
   if (window.location.search.includes("code=")) {
     try {
       await auth0.handleRedirectCallback();
@@ -47,7 +46,7 @@ window.onload = async () => {
   if (isAuthenticated) {
     document.getElementById("loginBtn").style.display = "none";
     document.getElementById("dashboardBtn").style.display = "block";
-    window.location.href = "/dashboard.html"; // Redirect to dashboard
+    window.location.href = "/dashboard.html";  // Redirect to dashboard
   } else {
     document.getElementById("loginBtn").style.display = "block";
     document.getElementById("dashboardBtn").style.display = "none";
