@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - PharmAI</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.auth0.com/js/auth0/9.18/auth0.min.js"></script> <!-- Auth0 SDK -->
-    <script src="auth.js"></script> <!-- Your JS for Auth0 setup -->
+
+    <!-- Auth0 SDK for Single Page Applications -->
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/1.19/auth0-spa-js.production.js"></script>
+    <script src="auth.js"></script> <!-- This script will contain your Auth0 setup and login/logout functions -->
 </head>
 <body>
+    <!-- Sidebar Section -->
     <div id="sidebar" class="sidebar">
         <button class="close-btn" onclick="toggleSidebar()">×</button>
         <a href="index.html">Home</a>
@@ -19,14 +22,17 @@
         <a href="#contact-us">Contact Us</a>
     </div>
 
+    <!-- Open Button for Sidebar -->
     <button class="open-btn" onclick="toggleSidebar()">☰</button>
 
     <section class="auth-section">
         <h2>Login to PharmAI</h2>
-        <button id="login" onclick="login()">Sign In with Auth0</button> <!-- Auth0 Login Button -->
+        <button id="loginBtn" onclick="login()">Sign In with Auth0</button>
+        <button id="dashboardBtn" style="display: none;" onclick="window.location.href='dashboard.html'">Go to Dashboard</button>
     </section>
 
     <script>
+        // Function to toggle the sidebar
         function toggleSidebar() {
             const sidebar = document.getElementById("sidebar");
             sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
