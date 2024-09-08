@@ -37,6 +37,8 @@
         // Sidebar toggle function
         function toggleSidebar() {
             const sidebar = document.getElementById("sidebar");
+            const currentWidth = sidebar.style.width;
+            
             if (sidebar.style.width === "250px") {
                 sidebar.style.width = "0"; // Close sidebar
             } else {
